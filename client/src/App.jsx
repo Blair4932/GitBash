@@ -4,6 +4,9 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState({});
   const [playerMove, setPlayerMove] = useState({});
+  const [opponentMove, setOpponentMove] = useState({});
+  const [playerHealth, setPlayerHealth] = useState(100);
+  const [opponentHealth, setOpponentHealth] = useState(100);
 
   const fetchCharacters = () => {
     fetch("http://localhost:9000/api/characters/")
@@ -13,9 +16,33 @@ function App() {
         setSelectedCharacter(data[0]);
       });
   };
+
   useEffect(() => {
     fetchCharacters();
   }, []);
+
+  const compareMoves = () => {
+    if (playerMove.name == "block" || opponentMove.name == "block") {
+      // probably want some kind of feedback here at some point but nothing functionally happens
+    } else {
+      const playerMoveDamage =
+        Math.floor(
+          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
+        ) + playerMove.damageMin;
+      const opponentMoveDamage =
+        Math.floor(
+          Math.random() * (opponentMove.damageMax - opponentMove.damageMin + 1)
+        ) + opponentMove.damageMin;
+
+      playerMoveDamage > opponentMoveDamage
+        ? setOpponentHealth(
+            opponentHealth - (playerMoveDamage - opponentMove.defence)
+          )
+        : setPlayerHealth(
+            playerHealth - (opponentMoveDamage - playerMove.defence)
+          );
+    }
+  };
 
   useEffect(() => {
     if (characters.length > 0) {
