@@ -17,6 +17,14 @@ function App() {
     fetchCharacters();
   }, []);
 
+  useEffect(() => {
+    if (characters.length > 0) {
+      const moveTypes = ["punch", "kick", "block", "specialMove"];
+      const randomMove = Math.floor(Math.random() * 4);
+      setOpponentMoves(characters[0].moves[moveTypes[randomMove]]);
+    }
+  }, [characters]);
+
   const PlayersMoves = ({ selectedCharacter, setPlayerMove }) => {
     return (
       <div className="select-move">
