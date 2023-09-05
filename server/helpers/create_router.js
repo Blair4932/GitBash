@@ -1,5 +1,5 @@
 const express = require("express");
-const ObjectID = require("mongodb").ObjectId;
+const ObjectID = require("mongodb").ObjectID;
 
 const createRouter = function (collection) {
   const router = express.Router();
@@ -21,8 +21,7 @@ const createRouter = function (collection) {
     collection
       .insertOne(newData)
       .then((result) => {
-        console.log("This is the result", result);
-        res.json(result);
+        res.json(result.ops[0]);
       })
       .catch((err) => {
         console.error(err);
@@ -39,7 +38,7 @@ const createRouter = function (collection) {
     collection
       .updateOne({ _id: ObjectID(id) }, { $set: updatedData })
       .then((result) => {
-        res.json(result.ops[0]);
+        res.json(result);
       })
       .catch((err) => {
         res.status(500);
