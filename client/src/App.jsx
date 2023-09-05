@@ -17,9 +17,6 @@ function App() {
 		fetchCharacters();
 	}, []);
 
-	console.log(playerMove);
-	console.log(selectedCharacter);
-
 	const PlayersMoves = ({ selectedCharacter, setPlayerMove }) => {
 		return (
 			<div className="select-move">
