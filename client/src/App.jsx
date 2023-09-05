@@ -87,14 +87,22 @@ function App() {
 			) : (
 				'Loading...'
 			)}
-			<p>Your move:</p>
+			<p>
+				<b>Your move: </b>
+			</p>
 			<p>{playerMove.name}</p>
-			<p>Opponents move:</p>
+			<p>
+				<b>Opponents move: </b>
+			</p>
 			<p>{opponentMove.name}</p>
 			<button onClick={compareMoves}>FIGHT</button>
-			<p>Your health: </p>
+			<p>
+				<b>Your health: </b>
+			</p>
 			<p>{playerHealth}</p>
-			<p>Opponents health:</p>
+			<p>
+				<b>Opponents health: </b>
+			</p>
 			<p>{opponentHealth}</p>
 		</div>
 	);
