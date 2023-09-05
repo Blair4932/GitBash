@@ -27,7 +27,7 @@ function App() {
 
 	const compareMoves = () => {
 		if (playerMove.name == 'block' || opponentMove.name == 'block') {
-			// probably want some kind of feedback here at some point but nothing functionally happens
+			return;
 		} else {
 			const playerMoveDamage =
 				Math.floor(
