@@ -43,10 +43,10 @@ function App() {
 			playerMoveDamage > opponentMoveDamage
 				? setOpponentHealth(
 						opponentHealth -
-							(playerMoveDamage - opponentMove.defence)
+							(playerMoveDamage - opponentMove.defense)
 				  )
 				: setPlayerHealth(
-						playerHealth - (opponentMoveDamage - playerMove.defence)
+						playerHealth - (opponentMoveDamage - playerMove.defense)
 				  );
 			console.log(playerHealth);
 			console.log(opponentHealth);
