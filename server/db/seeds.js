@@ -19,6 +19,12 @@ db.characters.insertMany([
         damageMax: 22,
         defense: 5,
       },
+      block: {
+        name: "Block",
+        damageMin: 0,
+        damageMax: 0,
+        defense: 100,
+      },
       specialMove: {
         name: "Donut Thunder",
         damageMin: 30,
@@ -27,8 +33,8 @@ db.characters.insertMany([
       },
     },
     sprites: {
-      default: "./images/Homer/homer_default.png",
-      default_inverted: "./images/Homer/homer_default_inverted.png",
+      default: "./images/character_sprites/homer/homer_default.png",
+      default_inverted: "./images/character_sprites/homer/homer_default_inverted.png",
     }
   },
   {
@@ -61,35 +67,33 @@ db.characters.insertMany([
       },
     },
     sprites: {
-      default: "./images/Dug/dug_default.png",
-      default_inverted: "./images/Dug/dug_default_inverted.png",
+      default: "./images/character_sprites/dug/dug_default.png",
+      default_inverted: "./images/character_sprites/dug/dug_default_inverted.png",
     }
+  }])
+db.arenas.insertMany([
+  {
+    name: "Springfield Nuclear Power Plant",
+    url: "./images/arenas/Homer_Arena.png"
+  },
+  {
+    name: "Paradise Falls",
+    url: "./images/arenas/ParadiseFalls_Arena.gif"
+  },
+  {
+    name: "China",
+    url: "./images/arenas/China_Arena.gif"
+  },
+  {
+    name: "Mothership",
+    url: "./images/arenas/Mothership_Arena.gif"
+  },
+  {
+    name: "Echo Swamp",
+    url: "./images/arenas/EchoSwamp_Arena.gif"
+  },
+  {
+    name: "Devil's Ship",
+    url: "./images/arenas/DevilsShip_Arena.gif"
   }
-  db.arenas.insertMany([
-    {
-      name: "Springfield Nuclear Power Plant",
-      url: "./images/arenas/Homer_Arena.png"
-    },
-    {
-      name: "Paradise Falls",
-      url: "./images/arenas/ParadiseFalls_Arena.gif"
-    },
-    {
-      name: "China",
-      url: "./images/arenas/China_Arena.gif"
-    },
-    {
-      name: "Mothership",
-      url: "./images/arenas/Mothership_Arena.gif"
-    },
-    {
-      name: "Echo Swamp",
-      url: "./images/arenas/EchoSwamp_Arena.gif"
-    },
-    {
-      name: "Devil's Ship",
-      url: "./images/arenas/DevilsShip_Arena.gif"
-    }
-    
-  ])
 ]);
