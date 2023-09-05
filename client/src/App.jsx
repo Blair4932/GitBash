@@ -26,8 +26,7 @@ function App() {
 	}, []);
 
 	const compareMoves = () => {
-		if (playerMove.name == 'block' || opponentMove.name == 'block') {
-			return;
+		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 		} else {
 			const playerMoveDamage =
 				Math.floor(
@@ -53,13 +52,17 @@ function App() {
 		}
 	};
 
+  console.log("Health out of the loop")
+  console.log(playerHealth);
+  console.log(opponentHealth);
+
 	useEffect(() => {
 		if (characters.length > 0) {
 			const moveTypes = ['punch', 'kick', 'block', 'specialMove'];
 			const randomMove = Math.floor(Math.random() * 4);
 			setOpponentMove(characters[0].moves[moveTypes[randomMove]]);
 		}
-	}, [characters]);
+	}, [playerMove]);
 
 	return (
 		<div>
