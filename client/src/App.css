@@ -3,47 +3,63 @@
 	padding: 0;
 }
 
-#background.china {
+#background {
+	height: 100vh;
+	width: 100vw;
+}
+
+.china {
 	background-image: url('/images/arenas/china.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.devils_ship {
+.chinabutton {
+	border: red 10px solid;
+}
+
+.devils_ship {
 	background-image: url('/images/arenas/devils_ship.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.echo_swamp {
+.echo_swamp {
 	background-image: url('/images/arenas/echo_swamp.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.mothership {
+.mothership {
 	background-image: url('/images/arenas/mothership.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.paradise_falls {
+.paradise_falls {
 	background-image: url('/images/arenas/paradise_falls.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
+}
+
+.arenaButton  {
+	height: 100px;
+	width: 100px;
+	padding: 100px;
+	border-radius: 10px;
+	border: 3px solid black;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	box-shadow: rgb(0, 0, 0) 2px 10px 20px;
+}
+
+.ArenaList {
+	display: flex;
+	justify-content: space-around;
 }
