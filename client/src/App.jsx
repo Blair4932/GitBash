@@ -15,6 +15,9 @@ function App() {
 	const [opponentHealth, setOpponentHealth] = useState(100);
 	const [result, setResult] = useState('');
 	const [roundTracker, setRoundTracker] = useState(0);
+	const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
+	const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] =
+		useState(0);
 
 	const fetchCharacters = () => {
 		fetch('http://localhost:9000/api/characters/')
@@ -44,6 +47,14 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
+			setPlayerSpecialMoveCharge(
+				playerSpecialMoveCharge + playerMoveDamage
+			);
+			setOpponentSpecialMoveCharge(
+				opponentSpecialMoveCharge + opponentMoveDamage
+			);
+			console.log('player: ', playerSpecialMoveCharge);
+			console.log('opponent: ', opponentSpecialMoveCharge);
 
 			playerMoveDamage > opponentMoveDamage
 				? setOpponentHealth(
@@ -104,6 +115,8 @@ function App() {
 					<PlayerMovesModal
 						selectedCharacter={selectedCharacter}
 						setPlayerMove={setPlayerMove}
+						playerSpecialMoveCharge={playerSpecialMoveCharge}
+						opponentSpecialMoveCharge={opponentSpecialMoveCharge}
 					/>
 					<p>
 						<b>Your move: </b>

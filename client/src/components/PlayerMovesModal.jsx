@@ -1,4 +1,9 @@
-const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
+const PlayerMovesModal = ({
+	selectedCharacter,
+	setPlayerMove,
+	playerSpecialMoveCharge,
+	opponentSpecialMoveCharge,
+}) => {
 	return (
 		<div className="select-move">
 			<p>Pick your move: </p>
@@ -29,17 +34,26 @@ const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
 				}}
 			/>
 			<label htmlFor="block">{selectedCharacter.moves.block.name}</label>
-			<input
-				type="radio"
-				name="move"
-				id="specialMove"
-				onClick={() => {
-					setPlayerMove(selectedCharacter.moves.specialMove);
-				}}
-			/>
-			<label htmlFor="specialMove">
-				{selectedCharacter.moves.specialMove.name}
-			</label>
+			{playerSpecialMoveCharge >= 50 ? (
+				<div>
+					<h3>Special Move Ready!</h3>
+					<input
+						type="radio"
+						name="move"
+						id="specialMove"
+						onClick={() => {
+							setPlayerMove(selectedCharacter.moves.specialMove);
+						}}
+					/>
+					<label htmlFor="specialMove">
+						{selectedCharacter.moves.specialMove.name}
+					</label>
+				</div>
+			) : (
+				<div>
+					<p>Your special move charge: {playerSpecialMoveCharge}</p>
+				</div>
+			)}
 		</div>
 	);
 };
