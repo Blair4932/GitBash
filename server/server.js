@@ -13,8 +13,11 @@ MongoClient.connect("mongodb://localhost:27017", {
 }).then((client) => {
   const db = client.db("GitBash");
   const charactersCollection = db.collection("characters");
+  const arenasCollection = db.collection("arenas");
   const charactersRouter = createRouter(charactersCollection);
+  const arenasRouter = createRouter(arenasCollection);
   app.use("/api/characters", charactersRouter);
+  app.use("/api/arenas", arenasRouter);
 });
 
 app.listen(9000, function () {

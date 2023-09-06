@@ -358,27 +358,28 @@ db.characters.insertMany([
 
 db.arenas.insertMany([
   {
-    name: "Springfield Nuclear Power Plant",
-    url: "./images/arenas/Homer_Arena.png"
-  },
-  {
     name: "Paradise Falls",
+    file_name:"paradise_falls",
     url: "./images/arenas/ParadiseFalls_Arena.gif"
   },
   {
     name: "China",
+    file_name:"china",
     url: "./images/arenas/China_Arena.gif"
   },
   {
     name: "Mothership",
+    file_name:"mothership",
     url: "./images/arenas/Mothership_Arena.gif"
   },
   {
     name: "Echo Swamp",
+    file_name:"echo_swamp",
     url: "./images/arenas/EchoSwamp_Arena.gif"
   },
   {
     name: "Devil's Ship",
+    file_name:"devils_ship",
     url: "./images/arenas/DevilsShip_Arena.gif"
   }
 ]);
