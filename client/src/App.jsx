@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import CharacterSelect from './components/CharacterSelect';
 import PlayerMovesModal from './components/PlayerMovesModal';
+import CharacterImage from './components/CharacterImage';
+import RoundCounterResultContainer from './containers/RoundCounterResultContainer';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -10,6 +12,8 @@ function App() {
 	const [opponentMove, setOpponentMove] = useState({});
 	const [playerHealth, setPlayerHealth] = useState(100);
 	const [opponentHealth, setOpponentHealth] = useState(100);
+	const [result, setResult] = useState('');
+	const [roundTracker, setRoundTracker] = useState(0);
 
 	const fetchCharacters = () => {
 		fetch('http://localhost:9000/api/characters/')
@@ -26,6 +30,7 @@ function App() {
 	}, []);
 
 	const compareMoves = () => {
+		setRoundTracker(roundTracker + 1);
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 		} else {
 			const playerMoveDamage =
@@ -52,9 +57,9 @@ function App() {
 		}
 	};
 
-  console.log("Health out of the loop")
-  console.log(playerHealth);
-  console.log(opponentHealth);
+	console.log('Health out of the loop');
+	console.log(playerHealth);
+	console.log(opponentHealth);
 
 	useEffect(() => {
 		if (characters.length > 0) {
@@ -64,8 +69,28 @@ function App() {
 		}
 	}, [playerMove]);
 
+	useEffect(() => {
+		if (playerHealth <= 0) {
+			setResult('Loss');
+		}
+	}, [playerHealth]);
+
+	useEffect(() => {
+		if (opponentHealth <= 0) {
+			setResult('Victory');
+		}
+	}, [opponentHealth]);
+
 	return (
 		<div>
+			{characters.length > 0 ? (
+				<RoundCounterResultContainer
+					roundTracker={roundTracker}
+					result={result}
+				/>
+			) : (
+				''
+			)}
 			{characters.length > 0 ? (
 				<CharacterSelect
 					characters={characters}
@@ -88,7 +113,7 @@ function App() {
 					setPlayerMove={setPlayerMove}
 				/>
 			) : (
-				'Loading...'
+				'Loading Moves'
 			)}
 			<p>
 				<b>Your move: </b>
@@ -110,16 +135,5 @@ function App() {
 		</div>
 	);
 }
-
-const CharacterImage = ({ selectedCharacter, opponentCharacter }) => {
-	return (
-		<div>
-			<p>Player Character: </p>
-			<img src={`${selectedCharacter.sprites.default}`} />
-			<p>Opponent: </p>
-			<img src={`${opponentCharacter.sprites.default}`} />
-		</div>
-	);
-};
 
 export default App;
