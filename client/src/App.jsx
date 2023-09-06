@@ -4,6 +4,7 @@ import PlayerMovesModal from './components/PlayerMovesModal';
 import CharacterImage from './components/CharacterImage';
 import RoundCounter from './components/RoundCounter';
 import Result from './components/Result';
+import FightButton from './components/FightButton';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -18,6 +19,7 @@ function App() {
 	const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
 	const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] =
 		useState(0);
+	const [fightState, setFightState] = useState(false);
 
 	const fetchCharacters = () => {
 		fetch('http://localhost:9000/api/characters/')
@@ -35,6 +37,7 @@ function App() {
 
 	const compareMoves = () => {
 		setRoundTracker(roundTracker + 1);
+		setFightState(true);
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 		} else {
 			const playerMoveDamage =
@@ -47,23 +50,27 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
-			setPlayerSpecialMoveCharge(
-				playerSpecialMoveCharge + playerMoveDamage
-			);
-			setOpponentSpecialMoveCharge(
-				opponentSpecialMoveCharge + opponentMoveDamage
-			);
+
 			console.log('player: ', playerSpecialMoveCharge);
 			console.log('opponent: ', opponentSpecialMoveCharge);
 
-			playerMoveDamage > opponentMoveDamage
-				? setOpponentHealth(
-						opponentHealth -
-							(playerMoveDamage - opponentMove.defense)
-				  )
-				: setPlayerHealth(
-						playerHealth - (opponentMoveDamage - playerMove.defense)
-				  );
+			if (playerMoveDamage > opponentMoveDamage) {
+				setOpponentHealth(
+					opponentHealth - (playerMoveDamage - opponentMove.defense)
+				);
+				setPlayerSpecialMoveCharge(
+					playerSpecialMoveCharge +
+						(playerMoveDamage - opponentMove.defense)
+				);
+			} else {
+				setPlayerHealth(
+					playerHealth - (opponentMoveDamage - playerMove.defense)
+				);
+				setOpponentSpecialMoveCharge(
+					opponentSpecialMoveCharge +
+						(opponentMoveDamage - playerMove.defense)
+				);
+			}
 			console.log(playerHealth);
 			console.log(opponentHealth);
 		}
@@ -117,7 +124,10 @@ function App() {
 						setPlayerMove={setPlayerMove}
 						playerSpecialMoveCharge={playerSpecialMoveCharge}
 						opponentSpecialMoveCharge={opponentSpecialMoveCharge}
+						fightState={fightState}
+						compareMoves={compareMoves}
 					/>
+					<FightButton setFightState={setFightState} />
 					<p>
 						<b>Your move: </b>
 					</p>
@@ -126,7 +136,6 @@ function App() {
 						<b>Opponents move: </b>
 					</p>
 					<p>{opponentMove.name}</p>
-					<button onClick={compareMoves}>FIGHT</button>
 					<p>
 						<b>Your health: </b>
 					</p>

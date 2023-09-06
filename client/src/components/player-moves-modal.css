@@ -1,0 +1,37 @@
+.select-move-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 10;
+	background-color: aliceblue;
+	width: 500px;
+	max-width: 80%;
+	opacity: 0;
+	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.select-move-modal.active {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+}
+
+/* .modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.25);
+	z-index: 9;
+	opacity: 0;
+	transition: opacity 200ms ease-in-out;
+	pointer-events: none;
+}
+
+.modal-overlay.active {
+	pointer-events: all;
+	opacity: 1;
+} */
