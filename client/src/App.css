@@ -139,6 +139,7 @@
 	height: 100%;
 	width: 100%;
 	position: absolute;
+	background: transparent;
 }
 
 .tile--info {
@@ -159,4 +160,123 @@
 .tile--icon {
 	height: auto;
 	max-width: 4vw;
+}
+
+.character--tile.homer_simpson:hover::before {
+	background-image: url("../images/character_icons/homer.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.dug:hover::before {
+	background-image: url("../images/character_icons/dug.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.ghost_rider:hover::before {
+	background-image: url("../images/character_icons/ghost_rider.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.garfield:hover::before {
+	background-image: url("../images/character_icons/garfield.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+.character--tile.iron_man:hover::before {
+	background-image: url("../images/character_icons/iron_man.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.cpt_jack_sparrow:hover::before {
+	background-image: url("../images/character_icons/cpt_jack_sparrow.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.jasmine:hover::before {
+	background-image: url("../images/character_icons/jasmine.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.mickey_mouse:hover::before {
+	background-image: url("../images/character_icons/mickey_mouse.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.mumble:hover::before {
+	background-image: url("../images/character_icons/mumble.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.character--tile.ragey:hover::before {
+	background-image: url("../images/character_icons/ragey.jpeg");
+	content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
 }

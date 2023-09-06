@@ -1,8 +1,13 @@
+import { useState } from 'react'
+
 const CharacterSelect = ({ characters, setSelectedCharacter }) => {
+
+	const [activeIcon, setActiveIcon] = useState("")
+
 	return (
 		<div className="character--grid">
 			{characters.map((character) => (
-				<div key={character._id} className="character--tile">
+				<div key={character._id} className={`character--tile ${character.file_name}`}>
 					<button
 						onClick={() => {
 							setSelectedCharacter(character);
