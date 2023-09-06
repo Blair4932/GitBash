@@ -134,16 +134,14 @@ function App() {
 					<div id="background" className={selectedArena.file_name}>
 						{fightState ? (
 							<>
-								<div className="gameplay-information">
-									{result === 'victory' ? (
-										<Result result={result} reset={reset} />
-									) : result === 'loss' ? (
-										<Result result={result} reset={reset} />
-									) : (
-										<RoundCounter
-											roundTracker={roundTracker}
-										/>
-									)}
+								<div className='round-tracker-container'>
+								{result === 'victory' ? (
+									<Result result={result} reset={reset} />
+								) : result === 'loss' ? (
+									<Result result={result} reset={reset} />
+								) : (
+									<RoundCounter roundTracker={roundTracker} />
+								)}
 								</div>
 								<CharacterImage
 									selectedCharacter={selectedCharacter}

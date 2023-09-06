@@ -79,6 +79,8 @@
 	max-width: 80%;
 	opacity: 0;
 	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+	padding: 1rem;
+	text-align: center;
 }
 
 .select-move-modal.active {
@@ -104,6 +106,23 @@
 	opacity: 1;
 } */
 
+/* round tracker */
+
+.round-tracker {
+	border: white 2px solid;
+	font-size: large;
+	font-weight: bold;
+	display: inline;
+	background-color: rgb(244, 6, 46);
+	padding: 1rem;
+}
+
+.round-tracker-container {
+	display: flex;
+	justify-content: center;
+	padding-top: 5rem;
+}
+
 /* character images */
 
 .character-image-container {
@@ -126,4 +145,41 @@
 	margin-top: 3rem;
 	display: flex;
 	justify-content: center;
+}
+
+.fight-button {
+	background-color: rgb(184, 182, 182);
+	color: #000000;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	height: 3rem;
+	width: 8rem;
+	transition: background-color 1s ease;
+	transform: skewX(-20deg);
+	font-weight: bold;
+	font-size: larger;
+}
+
+.fight-button.glow-on-hover:hover {
+	box-shadow: 0px 0px 10px #fffffe;
+	color: rgb(0, 0, 0);
+	transform: skewX(-20deg) scale(1.05);
+}
+
+.metal-button {
+	background: linear-gradient(to bottom, #aaa, #ddd);
+	border: 1px solid #888;
+	color: #333;
+	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.metal-button:hover {
+	background: linear-gradient(to bottom, #ddd, #fff);
+	transform: translate(0, -2px);
+	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
