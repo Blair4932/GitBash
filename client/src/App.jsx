@@ -6,7 +6,6 @@ import CharacterImage from "./components/CharacterImage";
 import RoundCounterResultContainer from "./containers/RoundCounterResultContainer";
 import ArenaSelect from "./components/ArenaSelect";
 import ArenaImage from "./components/ArenaImage";
-import styled from "styled-components";
 
 function App() {
   const [characters, setCharacters] = useState([]);
