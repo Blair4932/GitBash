@@ -1,4 +1,4 @@
-const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
+const PlayerMovesModal = ({ selectedCharacter, playerMove, setPlayerMove }) => {
 	return (
 		<div className="select-move">
 			<p>Pick your move: </p>
@@ -6,6 +6,7 @@ const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
 				type="radio"
 				name="move"
 				id="punch"
+				checked={playerMove.name === "Punch"}
 				onClick={() => {
 					setPlayerMove(selectedCharacter.moves.punch);
 				}}
@@ -15,8 +16,10 @@ const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
 				type="radio"
 				name="move"
 				id="kick"
+				checked={playerMove.name === "Kick"}
 				onClick={() => {
 					setPlayerMove(selectedCharacter.moves.kick);
+					console.log(playerMove)
 				}}
 			/>
 			<label htmlFor="kick">{selectedCharacter.moves.kick.name}</label>
@@ -24,6 +27,7 @@ const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
 				type="radio"
 				name="move"
 				id="block"
+				checked={playerMove.name === "Block"}
 				onClick={() => {
 					setPlayerMove(selectedCharacter.moves.block);
 				}}
@@ -33,6 +37,7 @@ const PlayerMovesModal = ({ selectedCharacter, setPlayerMove }) => {
 				type="radio"
 				name="move"
 				id="specialMove"
+				checked={playerMove.name === selectedCharacter.moves.specialMove}
 				onClick={() => {
 					setPlayerMove(selectedCharacter.moves.specialMove);
 				}}

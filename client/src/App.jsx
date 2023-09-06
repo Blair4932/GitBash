@@ -28,6 +28,7 @@ function App() {
 	const compareMoves = () => {
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 		} else {
+      console.log(playerMove)
 			const playerMoveDamage =
 				Math.floor(
 					Math.random() *
@@ -50,6 +51,7 @@ function App() {
 			console.log(playerHealth);
 			console.log(opponentHealth);
 		}
+    setPlayerMove({})
 	};
 
   console.log("Health out of the loop")
@@ -86,6 +88,7 @@ function App() {
 				<PlayerMovesModal
 					selectedCharacter={selectedCharacter}
 					setPlayerMove={setPlayerMove}
+          playerMove={playerMove}
 				/>
 			) : (
 				'Loading...'
