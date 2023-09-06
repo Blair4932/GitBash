@@ -8,6 +8,7 @@ import ArenaImage from './components/ArenaImage';
 import RoundCounter from './components/RoundCounter';
 import Result from './components/Result';
 import FightButton from './components/FightButton';
+import HealthBar from './components/HealthBar';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -143,6 +144,9 @@ function App() {
 						</div>
 						{fightState ? (
 							<>
+								<HealthBar
+									playerHealth={playerHealth}
+								/>
 								<CharacterImage
 									selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}

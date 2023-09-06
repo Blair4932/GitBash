@@ -102,3 +102,27 @@
 .gameplay-information {
 	background-color: aliceblue;
 }
+
+
+/* Progress Bar */
+
+.progress-bar {
+	position: relative;
+	width: 300px;
+	height: 4vh;
+	border: 0.5vh solid black;
+}
+
+.progress-bar--fill {
+	height: 100%;
+	background: red;
+	transition: width 0.5s; 
+}
+
+.progress-bar--value {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
