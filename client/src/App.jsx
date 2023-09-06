@@ -81,6 +81,7 @@ function App() {
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 			// Handle the case when a move is blocked
 		} else {
+      console.log(playerMove)
 			const playerMoveDamage =
 				Math.floor(
 					Math.random() *
@@ -91,6 +92,7 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
+
 
 			console.log('player: ', playerSpecialMoveCharge);
 			console.log('opponent: ', opponentSpecialMoveCharge);
@@ -152,6 +154,7 @@ function App() {
 						<ArenaImage selectedArena={selectedArena} />
 						<PlayerMovesModal
 							selectedCharacter={selectedCharacter}
+              playerMove={playerMove}
 							setPlayerMove={setPlayerMove}
 							playerSpecialMoveCharge={playerSpecialMoveCharge}
 							opponentSpecialMoveCharge={
