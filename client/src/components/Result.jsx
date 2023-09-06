@@ -1,15 +1,15 @@
-const Result = ({ result }) => {
+const Result = ({ result, reset }) => {
 	return (
 		<div>
 			{result == 'Victory' ? (
 				<div>
 					<h3>You Win!</h3>
-					<button>Play again?</button>
+					<button onClick={reset}>Play again?</button>
 				</div>
 			) : (
 				<div>
 					<h3>You Lose!</h3>
-					<button>Play again?</button>
+					<button onClick={reset}>Play again?</button>
 				</div>
 			)}
 		</div>

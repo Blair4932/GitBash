@@ -114,6 +114,15 @@ function App() {
 			}
 		}
 	};
+	const reset = () => {
+		setFightState(false);
+		setSelectedArena(arenas[0]);
+		setSelectedCharacter(characters[0]);
+		setOpponentHealth(100);
+		setPlayerHealth(100);
+		setRoundTracker(0);
+		setResult(null);
+	};
 
 	return (
 		<div>
@@ -121,9 +130,9 @@ function App() {
 				<>
 					<div id="background" className={selectedArena.file_name}>
 						{result === 'victory' ? (
-							<Result result={result} />
+							<Result result={result} reset={reset} />
 						) : result === 'loss' ? (
-							<Result result={result} />
+							<Result result={result} reset={reset} />
 						) : (
 							<RoundCounter roundTracker={roundTracker} />
 						)}
