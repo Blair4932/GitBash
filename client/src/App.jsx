@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import CharacterSelect from './components/CharacterSelect';
 import PlayerMovesModal from './components/PlayerMovesModal';
 import CharacterImage from './components/CharacterImage';
-import RoundCounterResultContainer from './containers/RoundCounterResultContainer';
+import RoundCounter from './components/RoundCounter';
+import Result from './components/Result';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -71,67 +72,58 @@ function App() {
 
 	useEffect(() => {
 		if (playerHealth <= 0) {
-			setResult('Loss');
+			setResult('loss');
 		}
 	}, [playerHealth]);
 
 	useEffect(() => {
 		if (opponentHealth <= 0) {
-			setResult('Victory');
+			setResult('victory');
 		}
 	}, [opponentHealth]);
 
 	return (
 		<div>
-			{characters.length > 0 ? (
-				<RoundCounterResultContainer
-					roundTracker={roundTracker}
-					result={result}
-				/>
-			) : (
-				''
+			{characters.length > 0 && (
+				<>
+					{result === 'victory' ? (
+						<Result result={result} />
+					) : result === 'loss' ? (
+						<Result result={result} />
+					) : (
+						<RoundCounter roundTracker={roundTracker} />
+					)}
+					<CharacterSelect
+						characters={characters}
+						setSelectedCharacter={setSelectedCharacter}
+					/>
+					<CharacterImage
+						selectedCharacter={selectedCharacter}
+						opponentCharacter={opponentCharacter}
+					/>
+					<PlayerMovesModal
+						selectedCharacter={selectedCharacter}
+						setPlayerMove={setPlayerMove}
+					/>
+					<p>
+						<b>Your move: </b>
+					</p>
+					<p>{playerMove.name}</p>
+					<p>
+						<b>Opponents move: </b>
+					</p>
+					<p>{opponentMove.name}</p>
+					<button onClick={compareMoves}>FIGHT</button>
+					<p>
+						<b>Your health: </b>
+					</p>
+					<p>{playerHealth}</p>
+					<p>
+						<b>Opponents health: </b>
+					</p>
+					<p>{opponentHealth}</p>
+				</>
 			)}
-			{characters.length > 0 ? (
-				<CharacterSelect
-					characters={characters}
-					setSelectedCharacter={setSelectedCharacter}
-				/>
-			) : (
-				'Loading Characters'
-			)}
-			{characters.length > 0 ? (
-				<CharacterImage
-					selectedCharacter={selectedCharacter}
-					opponentCharacter={opponentCharacter}
-				/>
-			) : (
-				'Loading Image'
-			)}
-			{characters.length > 0 ? (
-				<PlayerMovesModal
-					selectedCharacter={selectedCharacter}
-					setPlayerMove={setPlayerMove}
-				/>
-			) : (
-				'Loading Moves'
-			)}
-			<p>
-				<b>Your move: </b>
-			</p>
-			<p>{playerMove.name}</p>
-			<p>
-				<b>Opponents move: </b>
-			</p>
-			<p>{opponentMove.name}</p>
-			<button onClick={compareMoves}>FIGHT</button>
-			<p>
-				<b>Your health: </b>
-			</p>
-			<p>{playerHealth}</p>
-			<p>
-				<b>Opponents health: </b>
-			</p>
-			<p>{opponentHealth}</p>
 		</div>
 	);
 }
