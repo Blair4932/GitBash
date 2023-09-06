@@ -81,7 +81,6 @@ function App() {
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
 			// Handle the case when a move is blocked
 		} else {
-      console.log(playerMove)
 			const playerMoveDamage =
 				Math.floor(
 					Math.random() *
@@ -92,7 +91,6 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
-
 
 			console.log('player: ', playerSpecialMoveCharge);
 			console.log('opponent: ', opponentSpecialMoveCharge);
@@ -124,6 +122,8 @@ function App() {
 		setPlayerHealth(100);
 		setRoundTracker(0);
 		setResult(null);
+		setPlayerSpecialMoveCharge(0);
+		setOpponentSpecialMoveCharge(0);
 	};
 
 	return (
@@ -131,55 +131,72 @@ function App() {
 			{characters.length > 0 && (
 				<>
 					<div id="background" className={selectedArena.file_name}>
-						{result === 'victory' ? (
-							<Result result={result} reset={reset} />
-						) : result === 'loss' ? (
-							<Result result={result} reset={reset} />
+						<div className="gameplay-information">
+							{result === 'victory' ? (
+								<Result result={result} reset={reset} />
+							) : result === 'loss' ? (
+								<Result result={result} reset={reset} />
+							) : (
+								<RoundCounter roundTracker={roundTracker} />
+							)}
+						</div>
+						{fightState ? (
+							<>
+								<CharacterImage
+									selectedCharacter={selectedCharacter}
+									opponentCharacter={opponentCharacter}
+								/>
+								<PlayerMovesModal
+									selectedCharacter={selectedCharacter}
+									setPlayerMove={setPlayerMove}
+									playerSpecialMoveCharge={
+										playerSpecialMoveCharge
+									}
+									opponentSpecialMoveCharge={
+										opponentSpecialMoveCharge
+									}
+									compareMoves={compareMoves}
+									fightState={fightState}
+									playerMove={playerMove}
+								/>
+							</>
 						) : (
-							<RoundCounter roundTracker={roundTracker} />
+							<>
+								<CharacterImage
+									selectedCharacter={selectedCharacter}
+									opponentCharacter={opponentCharacter}
+								/>
+								<CharacterSelect
+									characters={characters}
+									setSelectedCharacter={setSelectedCharacter}
+								/>
+								<ArenaSelect
+									arenas={arenas}
+									setSelectedArena={setSelectedArena}
+									selectedArena={selectedArena}
+								/>
+								<ArenaImage selectedArena={selectedArena} />
+								<FightButton setFightState={setFightState} />
+							</>
 						)}
-						<CharacterSelect
-							characters={characters}
-							setSelectedCharacter={setSelectedCharacter}
-						/>
-						<CharacterImage
-							selectedCharacter={selectedCharacter}
-							opponentCharacter={opponentCharacter}
-						/>
-						<ArenaSelect
-							arenas={arenas}
-							setSelectedArena={setSelectedArena}
-							selectedArena={selectedArena}
-						/>
-						<ArenaImage selectedArena={selectedArena} />
-						<PlayerMovesModal
-							selectedCharacter={selectedCharacter}
-              playerMove={playerMove}
-							setPlayerMove={setPlayerMove}
-							playerSpecialMoveCharge={playerSpecialMoveCharge}
-							opponentSpecialMoveCharge={
-								opponentSpecialMoveCharge
-							}
-							compareMoves={compareMoves}
-							fightState={fightState}
-						/>
-						<FightButton setFightState={setFightState} />
-						<p>
-							<b>Your move: </b>
-						</p>
-						<p>{playerMove.name}</p>
-						<p>
-							<b>Opponents move: </b>
-						</p>
-						<p>{opponentMove.name}</p>
-						<p>
-							<b>Your health: </b>
-						</p>
-						<p>{playerHealth}</p>
-						<p>
-							<b>Opponents health: </b>
-						</p>
-						<p>{opponentHealth}</p>
+						<div className="gameplay-information">
+							<p>
+								<b>Your move: </b>
+							</p>
+							<p>{playerMove.name}</p>
+							<p>
+								<b>Opponents move: </b>
+							</p>
+							<p>{opponentMove.name}</p>
+							<p>
+								<b>Your health: </b>
+							</p>
+							<p>{playerHealth}</p>
+							<p>
+								<b>Opponents health: </b>
+							</p>
+							<p>{opponentHealth}</p>
+						</div>
 					</div>
 				</>
 			)}
