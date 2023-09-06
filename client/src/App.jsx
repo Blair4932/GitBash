@@ -110,7 +110,10 @@ const CharacterImage = ({ selectedCharacter, opponentCharacter }) => {
   return (
     <div>
       <p>Player Character: </p>
-      <img src={`${selectedCharacter.sprites.default}`} />
+      <img
+        src={`./images/character_sprites/${selectedCharacter.name}/${selectedCharacter.name}_default.png`}
+        // src={"./images/arenas/China_Arena.gif"}
+      />
       <p>Opponent: </p>
       <img src={`${opponentCharacter.sprites.default}`} />
     </div>

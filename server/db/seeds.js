@@ -4,7 +4,8 @@ db.dropDatabase();
 
 db.characters.insertMany([
   {
-    name: "Homer Simpson",
+    name: "Homer",
+    imgname: "homer_simpson",
     description: "Homer is the patriarch of the Simpson family. He works as a safety inspector at the Springfield Nuclear Power Plant, a position at odds with his careless, buffoonish personality. He is married to Marge Simpson, a stereotypical American housewife and mother. They have three children: Bart, a ten-year-old troublemaker; Lisa, a precocious eight-year-old activist; and Maggie, the baby of the family who rarely speaks, but communicates by sucking on a pacifier. Although Homer has many flaws, he has shown to have great caring, love, and even bravery to those he cares about and, sometimes, even others he doesn't. He served as the main protagonist of the 2007 film adaptation.",
     moves: {
       punch: {
@@ -33,6 +34,7 @@ db.characters.insertMany([
   },
   {
     name: "Dug",
+    imgname: "dug",
     description: "Dug",
     moves: {
       punch: {

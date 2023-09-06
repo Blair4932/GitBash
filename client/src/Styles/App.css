@@ -3,5 +3,8 @@
   padding: 0;
 }
 .body1 {
-  background-color: aquamarine;
+  background-image: url("images/arenas/EchoSwamp_Arena.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
