@@ -1,6 +1,11 @@
+@import url('https://fonts.cdnfonts.com/css/arcade-classic');
+
+                
+
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'ArcadeClassic';
 }
 
 #background.china {
@@ -101,4 +106,57 @@
 
 .gameplay-information {
 	background-color: aliceblue;
+}
+
+
+
+/* Character selection grid styling */
+
+.character--grid {
+	align-self: center;
+	justify-self: center;
+	justify-content: center;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	width: 60vw;
+	height: auto;
+	margin: auto;
+	gap: 1vw;
+}
+
+.character--tile { 
+	width: 10vw;
+	height: 10vw;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tile--button {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.tile--info {
+	z-index: 1;
+	width: 100%;
+	position: absolute;
+	pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tile--info h2 {
+	text-align: center;
+}
+
+.tile--icon {
+	height: auto;
+	max-width: 4vw;
 }
