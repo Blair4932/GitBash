@@ -115,6 +115,7 @@ function App() {
 				);
 			}
 		}
+		setPlayerMove("")
 	};
 	const reset = () => {
 		setFightState(false);
@@ -154,12 +155,10 @@ function App() {
 						<ArenaImage selectedArena={selectedArena} />
 						<PlayerMovesModal
 							selectedCharacter={selectedCharacter}
-              playerMove={playerMove}
+              				playerMove={playerMove}
 							setPlayerMove={setPlayerMove}
 							playerSpecialMoveCharge={playerSpecialMoveCharge}
-							opponentSpecialMoveCharge={
-								opponentSpecialMoveCharge
-							}
+							opponentSpecialMoveCharge={opponentSpecialMoveCharge}
 							compareMoves={compareMoves}
 							fightState={fightState}
 						/>
