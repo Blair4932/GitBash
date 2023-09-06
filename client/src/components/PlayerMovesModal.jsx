@@ -3,11 +3,14 @@ import './player-moves-modal.css';
 const PlayerMovesModal = ({
 	selectedCharacter,
 	setPlayerMove,
+	playerMove,
 	playerSpecialMoveCharge,
 	fightState,
 	compareMoves,
 }) => {
 	const modalClassName = `select-move-modal ${fightState ? 'active' : ''}`;
+
+	console.log(playerMove);
 
 	return (
 		<div className={`modal-overlay ${fightState ? 'active' : ''}`}>
@@ -17,6 +20,7 @@ const PlayerMovesModal = ({
 					type="radio"
 					name="move"
 					id="punch"
+					checked={playerMove.name === 'Punch'}
 					onClick={() => {
 						setPlayerMove(selectedCharacter.moves.punch);
 					}}
@@ -28,6 +32,7 @@ const PlayerMovesModal = ({
 					type="radio"
 					name="move"
 					id="kick"
+					checked={playerMove.name === 'Kick'}
 					onClick={() => {
 						setPlayerMove(selectedCharacter.moves.kick);
 					}}
@@ -39,6 +44,7 @@ const PlayerMovesModal = ({
 					type="radio"
 					name="move"
 					id="block"
+					checked={playerMove.name === 'Block'}
 					onClick={() => {
 						setPlayerMove(selectedCharacter.moves.block);
 					}}
@@ -53,6 +59,10 @@ const PlayerMovesModal = ({
 							type="radio"
 							name="move"
 							id="specialMove"
+							checked={
+								playerMove.name ===
+								selectedCharacter.moves.specialMove
+							}
 							onClick={() => {
 								setPlayerMove(
 									selectedCharacter.moves.specialMove

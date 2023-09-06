@@ -92,79 +92,114 @@ function App() {
       console.log("player: ", playerSpecialMoveCharge);
       console.log("opponent: ", opponentSpecialMoveCharge);
 
-      if (playerMoveDamage > opponentMoveDamage) {
-        setOpponentHealth(
-          opponentHealth - (playerMoveDamage - opponentMove.defense)
-        );
-        setPlayerSpecialMoveCharge(
-          playerSpecialMoveCharge + (playerMoveDamage - opponentMove.defense)
-        );
-      } else {
-        setPlayerHealth(
-          playerHealth - (opponentMoveDamage - playerMove.defense)
-        );
-        setOpponentSpecialMoveCharge(
-          opponentSpecialMoveCharge + (opponentMoveDamage - playerMove.defense)
-        );
-      }
-    }
-  };
 
-  return (
-    <div>
-      {characters.length > 0 && (
-        <>
-          <div id="background" className={selectedArena.file_name}>
-            {result === "victory" ? (
-              <Result result={result} />
-            ) : result === "loss" ? (
-              <Result result={result} />
-            ) : (
-              <RoundCounter roundTracker={roundTracker} />
-            )}
-            <ArenaSelect
-              arenas={arenas}
-              setSelectedArena={setSelectedArena}
-              selectedArena={selectedArena}
-            />
-            <CharacterSelect
-              characters={characters}
-              setSelectedCharacter={setSelectedCharacter}
-            />
-            <CharacterImage
-              selectedCharacter={selectedCharacter}
-              opponentCharacter={opponentCharacter}
-            />
-            <PlayerMovesModal
-              selectedCharacter={selectedCharacter}
-              setPlayerMove={setPlayerMove}
-              playerSpecialMoveCharge={playerSpecialMoveCharge}
-              opponentSpecialMoveCharge={opponentSpecialMoveCharge}
-              compareMoves={compareMoves}
-              fightState={fightState}
-            />
-            <FightButton setFightState={setFightState} />
-            <p>
-              <b>Your move: </b>
-            </p>
-            <p>{playerMove.name}</p>
-            <p>
-              <b>Opponents move: </b>
-            </p>
-            <p>{opponentMove.name}</p>
-            <p>
-              <b>Your health: </b>
-            </p>
-            <p>{playerHealth}</p>
-            <p>
-              <b>Opponents health: </b>
-            </p>
-            <p>{opponentHealth}</p>
-          </div>
-        </>
-      )}
-    </div>
-  );
+			if (playerMoveDamage > opponentMoveDamage) {
+				setOpponentHealth(
+					opponentHealth - (playerMoveDamage - opponentMove.defense)
+				);
+				setPlayerSpecialMoveCharge(
+					playerSpecialMoveCharge +
+						(playerMoveDamage - opponentMove.defense)
+				);
+			} else {
+				setPlayerHealth(
+					playerHealth - (opponentMoveDamage - playerMove.defense)
+				);
+				setOpponentSpecialMoveCharge(
+					opponentSpecialMoveCharge +
+						(opponentMoveDamage - playerMove.defense)
+				);
+			}
+		}
+		setPlayerMove('');
+	};
+	const reset = () => {
+		setFightState(false);
+		setSelectedArena(arenas[0]);
+		setSelectedCharacter(characters[0]);
+		setOpponentHealth(100);
+		setPlayerHealth(100);
+		setRoundTracker(0);
+		setResult(null);
+		setPlayerSpecialMoveCharge(0);
+		setOpponentSpecialMoveCharge(0);
+	};
+
+	return (
+		<div>
+			{characters.length > 0 && (
+				<>
+					<div id="background" className={selectedArena.file_name}>
+						<div className="gameplay-information">
+							{result === 'victory' ? (
+								<Result result={result} reset={reset} />
+							) : result === 'loss' ? (
+								<Result result={result} reset={reset} />
+							) : (
+								<RoundCounter roundTracker={roundTracker} />
+							)}
+						</div>
+						{fightState ? (
+							<>
+								<CharacterImage
+									selectedCharacter={selectedCharacter}
+									opponentCharacter={opponentCharacter}
+								/>
+								<PlayerMovesModal
+									selectedCharacter={selectedCharacter}
+									setPlayerMove={setPlayerMove}
+									playerSpecialMoveCharge={
+										playerSpecialMoveCharge
+									}
+									opponentSpecialMoveCharge={
+										opponentSpecialMoveCharge
+									}
+									compareMoves={compareMoves}
+									fightState={fightState}
+									playerMove={playerMove}
+								/>
+							</>
+						) : (
+							<>
+              		<ArenaSelect
+									arenas={arenas}
+									setSelectedArena={setSelectedArena}
+									selectedArena={selectedArena}
+								/>
+								<CharacterImage
+									selectedCharacter={selectedCharacter}
+									opponentCharacter={opponentCharacter}
+								/>
+								<CharacterSelect
+									characters={characters}
+									setSelectedCharacter={setSelectedCharacter}
+								/>
+								<FightButton setFightState={setFightState} />
+							</>
+						)}
+						<div className="gameplay-information">
+							<p>
+								<b>Your move: </b>
+							</p>
+							<p>{playerMove.name}</p>
+							<p>
+								<b>Opponents move: </b>
+							</p>
+							<p>{opponentMove.name}</p>
+							<p>
+								<b>Your health: </b>
+							</p>
+							<p>{playerHealth}</p>
+							<p>
+								<b>Opponents health: </b>
+							</p>
+							<p>{opponentHealth}</p>
+						</div>
+					</div>
+				</>
+			)}
+		</div>
+	);
 }
 
 export default App;
