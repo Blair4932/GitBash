@@ -5,6 +5,7 @@ db.dropDatabase();
 db.characters.insertMany([
   {
     name: "Homer Simpson",
+    file_name:"homer_simpson",
     description: "Homer is the patriarch of the Simpson family. He works as a safety inspector at the Springfield Nuclear Power Plant, a position at odds with his careless, buffoonish personality. He is married to Marge Simpson, a stereotypical American housewife and mother. They have three children: Bart, a ten-year-old troublemaker; Lisa, a precocious eight-year-old activist; and Maggie, the baby of the family who rarely speaks, but communicates by sucking on a pacifier. Although Homer has many flaws, he has shown to have great caring, love, and even bravery to those he cares about and, sometimes, even others he doesn't. He served as the main protagonist of the 2007 film adaptation.",
     moves: {
       punch: {
@@ -39,6 +40,7 @@ db.characters.insertMany([
   },
   {
     name: "Dug",
+    file_name:"dug",
     description: "Dug",
     moves: {
       punch: {
@@ -73,6 +75,7 @@ db.characters.insertMany([
   },
   {
     name: "Ragey",
+    file_name: "ragey",
     description: "Raging little dude with drills for hands, a real powerhouse of machinary you would not want to mess with!",
     moves: {
       punch: {
@@ -107,6 +110,7 @@ db.characters.insertMany([
   },
   {
     name: "Mickey Mouse",
+    file_name:"mickey_mouse",
     description: "The evil CEO of multi-national Disney corp, a cunning and careful mouse not to be trusted in a fair fight",
     moves: {
       punch: {
@@ -141,6 +145,7 @@ db.characters.insertMany([
   },
   {
     name: "Jasmine",
+    file_name:"jasmine",
     description: "The be-dazzling princess of Agrabah, there is more to this warrior than meets the eye. Handy with a sword as well as other things she's a strong choice in the ring.",
     moves: {
       punch: {
@@ -175,6 +180,7 @@ db.characters.insertMany([
   },
   {
     name: "Ghost Rider",
+    file_name:"ghost_rider",
     description: "The firey skeleton man that is ghost rider is a tough opponent, the fact that it took Nicholas Cage to portrey this beast in the popular movie franchise is reason enough to pick this fighter",
     moves: {
       punch: {
@@ -209,6 +215,7 @@ db.characters.insertMany([
   },
   {
     name: "Garfield",
+    file_name:"garfield",
     description: "The surprtisingly nimble feline frenzie that is garfield, a poised and agile fighter, who loves lasagne goes without saying.",
     moves: {
       punch: {
@@ -243,6 +250,7 @@ db.characters.insertMany([
   },
   {
     name: "Mumble",
+    file_name:"mumble",
     description: "The slippery protagonist from the smash hit Happy Feet, Mumble has a plethora of moves, enhanced by hes extremely speedy feet.",
     moves: {
       punch: {
@@ -277,6 +285,7 @@ db.characters.insertMany([
   },
   {
     name: "Iron Man",
+    file_name:"iron_man",
     description: "The intelligent and athletic billionaire philanthropist (Robert Downey Jr) has more than enough firepower to see you through your next fight.",
     moves: {
       punch: {
@@ -311,6 +320,7 @@ db.characters.insertMany([
   },
   {
     name: "Cpt Jack Sparrow",
+    file_name:"cpt_jack_sparrow",
     description: "Witty Jack, notorious pirate captain who has bested many a foe with his instinctive wit, and enchanting good looks, a strong fighter indeed.",
     moves: {
       punch: {
