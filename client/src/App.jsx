@@ -1,15 +1,11 @@
+
 import { useState, useEffect } from "react";
 import "./App.css";
 import CharacterSelect from "./components/CharacterSelect";
 import PlayerMovesModal from "./components/PlayerMovesModal";
 import CharacterImage from "./components/CharacterImage";
-import RoundCounterResultContainer from "./containers/RoundCounterResultContainer";
 import ArenaSelect from "./components/ArenaSelect";
 import ArenaImage from "./components/ArenaImage";
-import { useState, useEffect } from "react";
-import CharacterSelect from "./components/CharacterSelect";
-import PlayerMovesModal from "./components/PlayerMovesModal";
-import CharacterImage from "./components/CharacterImage";
 import RoundCounter from "./components/RoundCounter";
 import Result from "./components/Result";
 
@@ -27,6 +23,7 @@ function App() {
   const [roundTracker, setRoundTracker] = useState(0);
   const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
   const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] = useState(0);
+
 
   const fetchCharacters = () => {
     fetch("http://localhost:9000/api/characters/")
@@ -49,52 +46,16 @@ function App() {
       });
   };
 
-  console.log("This is Arenas", arenas);
-  console.log("This is Selected Arena", selectedArena);
 
   useEffect(() => {
     fetchArenas();
   }, []);
 
+
   useEffect(() => {
     fetchCharacters();
   }, []);
-
-  const compareMoves = () => {
-    setRoundTracker(roundTracker + 1);
-    if (playerMove.name == "Block" || opponentMove.name == "Block") {
-    } else {
-      const playerMoveDamage =
-        Math.floor(
-          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
-        ) + playerMove.damageMin;
-      const opponentMoveDamage =
-        Math.floor(
-          Math.random() * (opponentMove.damageMax - opponentMove.damageMin + 1)
-        ) + opponentMove.damageMin;
-      setPlayerSpecialMoveCharge(playerSpecialMoveCharge + playerMoveDamage);
-      setOpponentSpecialMoveCharge(
-        opponentSpecialMoveCharge + opponentMoveDamage
-      );
-      console.log("player: ", playerSpecialMoveCharge);
-      console.log("opponent: ", opponentSpecialMoveCharge);
-
-      playerMoveDamage > opponentMoveDamage
-        ? setOpponentHealth(
-            opponentHealth - (playerMoveDamage - opponentMove.defense)
-          )
-        : setPlayerHealth(
-            playerHealth - (opponentMoveDamage - playerMove.defense)
-          );
-      console.log(playerHealth);
-      console.log(opponentHealth);
-    }
-  };
-
-  console.log("Health out of the loop");
-  console.log(playerHealth);
-  console.log(opponentHealth);
-
+  
   useEffect(() => {
     if (characters.length > 0) {
       const moveTypes = ["punch", "kick", "block", "specialMove"];
@@ -115,8 +76,49 @@ function App() {
     }
   }, [opponentHealth]);
 
-  return (
-    <div id="background" className={selectedArena.file_name}>
+  const compareMoves = () => {
+		setRoundTracker(roundTracker + 1);
+		setFightState(true);
+		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
+		} else {
+			const playerMoveDamage =
+				Math.floor(
+					Math.random() *
+						(playerMove.damageMax - playerMove.damageMin + 1)
+				) + playerMove.damageMin;
+			const opponentMoveDamage =
+				Math.floor(
+					Math.random() *
+						(opponentMove.damageMax - opponentMove.damageMin + 1)
+				) + opponentMove.damageMin;
+
+			console.log('player: ', playerSpecialMoveCharge);
+			console.log('opponent: ', opponentSpecialMoveCharge);
+
+			if (playerMoveDamage > opponentMoveDamage) {
+				setOpponentHealth(
+					opponentHealth - (playerMoveDamage - opponentMove.defense)
+				);
+				setPlayerSpecialMoveCharge(
+					playerSpecialMoveCharge +
+						(playerMoveDamage - opponentMove.defense)
+				);
+			} else {
+				setPlayerHealth(
+					playerHealth - (opponentMoveDamage - playerMove.defense)
+				);
+				setOpponentSpecialMoveCharge(
+					opponentSpecialMoveCharge +
+						(opponentMoveDamage - playerMove.defense)
+				);
+			}
+
+
+	return (
+		<div>
+			{characters.length > 0 && (
+				<>
+          <div id="background" className={selectedArena.file_name}>
       {characters.length > 0 ? (
         <RoundCounterResultContainer
           roundTracker={roundTracker}
@@ -125,23 +127,22 @@ function App() {
       ) : (
         ""
       )}
-      {characters.length > 0 ? (
-        <CharacterSelect
-          characters={characters}
-          setSelectedCharacter={setSelectedCharacter}
-        />
-      ) : (
-        "Loading Characters"
-      )}
-      {characters.length > 0 ? (
-        <CharacterImage
-          selectedCharacter={selectedCharacter}
-          opponentCharacter={opponentCharacter}
-        />
-      ) : (
-        "Loading Image"
-      )}
-      {arenas.length > 0 ? (
+					{result === 'victory' ? (
+						<Result result={result} />
+					) : result === 'loss' ? (
+						<Result result={result} />
+					) : (
+						<RoundCounter roundTracker={roundTracker} />
+					)}
+					<CharacterSelect
+						characters={characters}
+						setSelectedCharacter={setSelectedCharacter}
+					/>
+					<CharacterImage
+						selectedCharacter={selectedCharacter}
+						opponentCharacter={opponentCharacter}
+					/>
+             {arenas.length > 0 ? (
         <ArenaSelect arenas={arenas} setSelectedArena={setSelectedArena} />
       ) : (
         "Loading Arena"
@@ -151,33 +152,35 @@ function App() {
       ) : (
         "Loading Image"
       )}
-      {characters.length > 0 ? (
-        <PlayerMovesModal
-          selectedCharacter={selectedCharacter}
-          setPlayerMove={setPlayerMove}
-        />
-      ) : (
-        "Loading Moves"
-      )}
-      <p>
-        <b>Your move: </b>
-      </p>
-      <p>{playerMove.name}</p>
-      <p>
-        <b>Opponents move: </b>
-      </p>
-      <p>{opponentMove.name}</p>
-      <button onClick={compareMoves}>FIGHT</button>
-      <p>
-        <b>Your health: </b>
-      </p>
-      <p>{playerHealth}</p>
-      <p>
-        <b>Opponents health: </b>
-      </p>
-      <p>{opponentHealth}</p>
-    </div>
-  );
+					<PlayerMovesModal
+						selectedCharacter={selectedCharacter}
+						setPlayerMove={setPlayerMove}
+						playerSpecialMoveCharge={playerSpecialMoveCharge}
+						opponentSpecialMoveCharge={opponentSpecialMoveCharge}
+						fightState={fightState}
+						compareMoves={compareMoves}
+					/>
+					<FightButton setFightState={setFightState} />
+					<p>
+						<b>Your move: </b>
+					</p>
+					<p>{playerMove.name}</p>
+					<p>
+						<b>Opponents move: </b>
+					</p>
+					<p>{opponentMove.name}</p>
+					<p>
+						<b>Your health: </b>
+					</p>
+					<p>{playerHealth}</p>
+					<p>
+						<b>Opponents health: </b>
+					</p>
+					<p>{opponentHealth}</p>
+				</>
+			)}
+		</div>
+	);
 }
 
 export default App;
