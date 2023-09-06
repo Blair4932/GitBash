@@ -113,6 +113,7 @@ function App() {
 				);
 			}
 		}
+		setPlayerMove("")
 	};
 	const reset = () => {
 		setFightState(false);
@@ -179,6 +180,31 @@ function App() {
 								<FightButton setFightState={setFightState} />
 							</>
 						)}
+
+						<CharacterSelect
+							characters={characters}
+							setSelectedCharacter={setSelectedCharacter}
+						/>
+						<CharacterImage
+							selectedCharacter={selectedCharacter}
+							opponentCharacter={opponentCharacter}
+						/>
+						<ArenaSelect
+							arenas={arenas}
+							setSelectedArena={setSelectedArena}
+							selectedArena={selectedArena}
+						/>
+						<ArenaImage selectedArena={selectedArena} />
+						<PlayerMovesModal
+							selectedCharacter={selectedCharacter}
+              				playerMove={playerMove}
+							setPlayerMove={setPlayerMove}
+							playerSpecialMoveCharge={playerSpecialMoveCharge}
+							opponentSpecialMoveCharge={opponentSpecialMoveCharge}
+							compareMoves={compareMoves}
+							fightState={fightState}
+						/>
+						<FightButton setFightState={setFightState} />
 						<div className="gameplay-information">
 							<p>
 								<b>Your move: </b>
