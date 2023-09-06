@@ -1,8 +1,4 @@
-import { useState } from 'react'
-
 const CharacterSelect = ({ characters, setSelectedCharacter }) => {
-
-	const [activeIcon, setActiveIcon] = useState("")
 
 	return (
 		<div className="character--grid">
