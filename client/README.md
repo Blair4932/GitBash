@@ -1,8 +1,19 @@
-# React + Vite
+# To tun it, in separate terminals
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## terminal 1: (you want to be in the server folder)
 
-Currently, two official plugins are available:
+```
+npm run seeds
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## terminal 2: (you want to be in the server folder)
+
+```
+npm run dev-server
+```
+
+## terminal 3: you want to be in the client folder
+
+```
+npm run dev-client
+```

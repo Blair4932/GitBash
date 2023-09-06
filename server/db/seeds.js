@@ -27,8 +27,8 @@ db.characters.insertMany([
       },
     },
     sprites: {
-      default: "./images/Homer/homer_default.png",
-      default_inverted: "./images/Homer/homer_default_inverted.png",
+      default: "./images/character_sprites/Homer/homer_default.png",
+      default_inverted: "./images/character_sprites/Homer/homer_default_inverted.png",
     }
   },
   {
@@ -61,11 +61,11 @@ db.characters.insertMany([
       },
     },
     sprites: {
-      default: "./images/Dug/dug_default.png",
-      default_inverted: "./images/Dug/dug_default_inverted.png",
+      default: "./images/character_sprites/Dug/dug_default.png",
+      default_inverted: "./images/character_sprites/Dug/dug_default_inverted.png",
     }
-  }
-  db.arenas.insertMany([
+  }]);
+db.arenas.insertMany([
     {
       name: "Springfield Nuclear Power Plant",
       url: "./images/arenas/Homer_Arena.png"
@@ -92,4 +92,4 @@ db.characters.insertMany([
     }
     
   ])
-]);
+;
