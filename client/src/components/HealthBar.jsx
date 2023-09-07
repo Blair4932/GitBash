@@ -4,9 +4,20 @@ const HealthBar = ({ playerHealth }) => {
 
     return (
         <>
-            <div className="progress-bar">
-                <div className="progress-bar--value">{playerHealth}</div>
-                <div className="progress-bar--fill" style={{width: playerHealth * 3}}></div>
+            <div className="container--progress-bar">
+                <div className="progress-bar">
+                    <div className="progress-bar--value">
+                        <h3>{playerHealth}</h3>
+                    </div>
+                    <div className="progress-bar--fill" style={{width: playerHealth * 3}}></div>
+                </div>
+                
+                <div className="progress-bar">
+                    <div className="progress-bar--value">
+                        <h3>{playerHealth}</h3>
+                    </div>
+                    <div className="progress-bar--fill" style={{width: playerHealth * 3}}></div>
+                </div>
             </div>
         </>
     )
