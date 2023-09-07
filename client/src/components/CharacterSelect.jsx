@@ -1,18 +1,23 @@
 const CharacterSelect = ({ characters, setSelectedCharacter }) => {
+
 	return (
-		<ul>
+		<div className="character--grid">
 			{characters.map((character) => (
-				<li key={character._id}>
+				<div key={character._id} className={`character--tile ${character.file_name}`}>
 					<button
 						onClick={() => {
 							setSelectedCharacter(character);
 						}}
+						className="tile--button"
 					>
-						{character.name}
 					</button>
-				</li>
+					<div className="tile--info">
+						<img src={`./images/character_sprites/${character.file_name}/${character.file_name + "_default"}.png`} className="tile--icon"/>
+						<h2>{character.name}</h2>
+					</div>
+				</div>
 			))}
-		</ul>
+		</div>
 	);
 };
 
