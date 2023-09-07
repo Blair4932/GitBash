@@ -1,51 +1,73 @@
+@import url('https://fonts.cdnfonts.com/css/arcade-classic');
+
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'ArcadeClassic';
 }
 
-#background.china {
+#background {
+	height: 100vh;
+	width: 100vw;
+}
+
+.china {
 	background-image: url('/images/arenas/china.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.devils_ship {
+.devils_ship {
 	background-image: url('/images/arenas/devils_ship.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.echo_swamp {
+.echo_swamp {
 	background-image: url('/images/arenas/echo_swamp.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.mothership {
+.mothership {
 	background-image: url('/images/arenas/mothership.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
-#background.paradise_falls {
+.paradise_falls {
 	background-image: url('/images/arenas/paradise_falls.gif');
-	background-size: contain;
-	height: 100vh;
-	width: 100vw;
-	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 	background-repeat: no-repeat;
+}
+
+.arenaButton {
+	height: 100px;
+	width: 100px;
+	padding: 100px;
+	border-radius: 10px;
+	border: 3px solid black;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	font-weight: bold;
+	box-shadow: rgb(0, 0, 0) 2px 10px 20px;
+	cursor: pointer;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ArenaList {
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
 }
 
 /* Player moves modal */
@@ -56,13 +78,13 @@
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0);
 	border: 1px solid black;
-	border-radius: 10px;
-	z-index: 10;
-	background-color: aliceblue;
-	width: 500px;
+	background-color: rgb(249, 249, 249);
 	max-width: 80%;
 	opacity: 0;
 	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+	padding: 10px;
+	text-align: center;
+	font-size: larger;
 }
 
 .select-move-modal.active {
@@ -70,6 +92,34 @@
 	opacity: 1;
 }
 
+.modal-text {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-right: 1rem;
+}
+
+.modal-input {
+	cursor: pointer;
+	border: 1px solid #000000;
+	padding: 0.5em;
+	-webkit-appearance: none;
+	margin: 2px;
+}
+
+.modal-input:hover {
+	box-shadow: 0px 0px 10px rgba(69, 69, 69, 0.5);
+}
+
+.modal-input:checked {
+	/* background: url(data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==)
+		no-repeat center center; */
+	background-size: 9px 9px;
+	background-color: #000000;
+}
+
+.modal-input:focus {
+	outline-color: transparent;
+}
 /* .modal-overlay {
 	position: fixed;
 	top: 0;
@@ -88,6 +138,23 @@
 	opacity: 1;
 } */
 
+/* round tracker */
+
+.round-tracker {
+	border: white 2px solid;
+	font-size: large;
+	font-weight: bold;
+	display: inline;
+	background-color: rgb(244, 6, 46);
+	padding: 1rem;
+}
+
+.round-tracker-container {
+	display: flex;
+	justify-content: center;
+	padding-top: 5rem;
+}
+
 /* character images */
 
 .character-image-container {
@@ -95,6 +162,7 @@
 	justify-content: space-between;
 	margin-left: 5rem;
 	margin-right: 5rem;
+	margin-top: 10rem;
 }
 
 /* gameplay information numbers */
@@ -144,4 +212,227 @@
 	justify-content: end;
 	justify-self: end;
 	text-align: right;
+}
+
+
+/* Character selection grid styling */
+
+.character--grid {
+	align-self: center;
+	justify-self: center;
+	justify-content: center;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	width: 60vw;
+	height: auto;
+	margin: auto;
+	gap: 1vw;
+}
+
+.character--tile {
+	width: 10vw;
+	height: 10vw;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tile--button {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background: transparent;
+}
+
+.tile--info {
+	z-index: 1;
+	width: 100%;
+	position: absolute;
+	pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tile--info h2 {
+	text-align: center;
+}
+
+.tile--icon {
+	height: auto;
+	max-width: 4vw;
+}
+
+.character--tile.homer_simpson:hover::before {
+	background-image: url('../images/character_icons/homer.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.dug:hover::before {
+	background-image: url('../images/character_icons/dug.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.ghost_rider:hover::before {
+	background-image: url('../images/character_icons/ghost_rider.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.garfield:hover::before {
+	background-image: url('../images/character_icons/garfield.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+.character--tile.iron_man:hover::before {
+	background-image: url('../images/character_icons/iron_man.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.cpt_jack_sparrow:hover::before {
+	background-image: url('../images/character_icons/cpt_jack_sparrow.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.jasmine:hover::before {
+	background-image: url('../images/character_icons/jasmine.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.mickey_mouse:hover::before {
+	background-image: url('../images/character_icons/mickey_mouse.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.mumble:hover::before {
+	background-image: url('../images/character_icons/mumble.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+.character--tile.ragey:hover::before {
+	background-image: url('../images/character_icons/ragey.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+
+/* fight button */
+
+.fight-button-container {
+	margin-top: 3rem;
+	display: flex;
+	justify-content: center;
+}
+
+.fight-button {
+	background-color: rgb(184, 182, 182);
+	color: #000000;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	height: 3rem;
+	width: 8rem;
+	transition: background-color 1s ease;
+	transform: skewX(-20deg);
+	font-weight: bold;
+	font-size: larger;
+}
+
+.fight-button.glow-on-hover:hover {
+	box-shadow: 0px 0px 10px #fffffe;
+	color: rgb(0, 0, 0);
+	transform: skewX(-20deg) scale(1.05);
+}
+
+.metal-button {
+	background: linear-gradient(to bottom, #aaa, #ddd);
+	border: 1px solid #888;
+	color: #333;
+	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.metal-button:hover {
+	background: linear-gradient(to bottom, #ddd, #fff);
+	transform: translate(0, -2px);
+	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+
+.arenaButton:hover {
+	transform: translate(0, -2px);
+	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }

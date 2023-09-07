@@ -133,21 +133,25 @@ function App() {
 			{characters.length > 0 && (
 				<>
 					<div id="background" className={selectedArena.file_name}>
-						<div className="gameplay-information">
-							{result === 'victory' ? (
-								<Result result={result} reset={reset} />
-							) : result === 'loss' ? (
-								<Result result={result} reset={reset} />
-							) : (
-								<RoundCounter roundTracker={roundTracker} />
-							)}
-						</div>
 						{fightState ? (
 							<>
 								<HealthBar
 									playerHealth={playerHealth}
 									opponentHealth={opponentHealth}
 								/>
+
+								<div className="round-tracker-container">
+									{result === 'victory' ? (
+										<Result result={result} reset={reset} />
+									) : result === 'loss' ? (
+										<Result result={result} reset={reset} />
+									) : (
+										<RoundCounter
+											roundTracker={roundTracker}
+										/>
+									)}
+								</div>
+
 								<CharacterImage
 									selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}
@@ -168,6 +172,12 @@ function App() {
 							</>
 						) : (
 							<>
+								<ArenaSelect
+									arenas={arenas}
+									setSelectedArena={setSelectedArena}
+									selectedArena={selectedArena}
+								/>
+								<FightButton setFightState={setFightState} />
 								<CharacterImage
 									selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}
@@ -176,13 +186,6 @@ function App() {
 									characters={characters}
 									setSelectedCharacter={setSelectedCharacter}
 								/>
-								<ArenaSelect
-									arenas={arenas}
-									setSelectedArena={setSelectedArena}
-									selectedArena={selectedArena}
-								/>
-								<ArenaImage selectedArena={selectedArena} />
-								<FightButton setFightState={setFightState} />
 							</>
 						)}
 						<div className="gameplay-information">

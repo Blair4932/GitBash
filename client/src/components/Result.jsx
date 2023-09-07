@@ -1,6 +1,6 @@
 const Result = ({ result, reset }) => {
 	return (
-		<div>
+		<div className="round-tracker">
 			{result == 'Victory' ? (
 				<div>
 					<h3>You Win!</h3>

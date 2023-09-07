@@ -1,5 +1,3 @@
-import './player-moves-modal.css';
-
 const PlayerMovesModal = ({
 	selectedCharacter,
 	setPlayerMove,
@@ -15,8 +13,9 @@ const PlayerMovesModal = ({
 	return (
 		<div className={`modal-overlay ${fightState ? 'active' : ''}`}>
 			<div className={modalClassName}>
-				<p>Pick your move: </p>
+				<p className="modal-text">Pick your move: </p>
 				<input
+					className="modal-input glow-on-hover"
 					type="radio"
 					name="move"
 					id="punch"
@@ -25,10 +24,11 @@ const PlayerMovesModal = ({
 						setPlayerMove(selectedCharacter.moves.punch);
 					}}
 				/>
-				<label htmlFor="punch">
+				<label className="modal-text" htmlFor="punch">
 					{selectedCharacter.moves.punch.name}
 				</label>
 				<input
+					className="modal-input"
 					type="radio"
 					name="move"
 					id="kick"
@@ -37,10 +37,11 @@ const PlayerMovesModal = ({
 						setPlayerMove(selectedCharacter.moves.kick);
 					}}
 				/>
-				<label htmlFor="kick">
+				<label className="modal-text" htmlFor="kick">
 					{selectedCharacter.moves.kick.name}
 				</label>
 				<input
+					className="modal-input"
 					type="radio"
 					name="move"
 					id="block"
@@ -49,13 +50,14 @@ const PlayerMovesModal = ({
 						setPlayerMove(selectedCharacter.moves.block);
 					}}
 				/>
-				<label htmlFor="block">
+				<label className="modal-text" htmlFor="block">
 					{selectedCharacter.moves.block.name}
 				</label>
 				{playerSpecialMoveCharge >= 50 ? (
 					<div>
 						<h3>Special Move Ready!</h3>
 						<input
+							className="modal-input"
 							type="radio"
 							name="move"
 							id="specialMove"
@@ -69,13 +71,13 @@ const PlayerMovesModal = ({
 								);
 							}}
 						/>
-						<label htmlFor="specialMove">
+						<label className="modal-text" htmlFor="specialMove">
 							{selectedCharacter.moves.specialMove.name}
 						</label>
 					</div>
 				) : (
 					<div>
-						<p>
+						<p className="modal-text">
 							Your special move charge: {playerSpecialMoveCharge}
 						</p>
 					</div>
