@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+
 import FightStateActive from './containers/FightStateActive';
 import FightStateInactive from './containers/FightStateInactive';
 import GameplayInformation from './components/GameplayInformation';
+import HealthBar from './components/HealthBar';
+
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -129,11 +132,12 @@ function App() {
 					<div id="background" className={selectedArena.file_name}>
 						{fightState ? (
 							<>
+
 								<FightStateActive
 									result={result}
 									reset={reset}
 									roundTracker={roundTracker}
-									selectedCharacter={selectedCharacter}
+	                selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}
 									setPlayerMove={setPlayerMove}
 									playerSpecialMoveCharge={
@@ -145,6 +149,10 @@ function App() {
 									compareMoves={compareMoves}
 									fightState={fightState}
 									playerMove={playerMove}
+								/>
+								<HealthBar
+									playerHealth={playerHealth}
+									opponentHealth={opponentHealth}
 								/>
 							</>
 						) : (
