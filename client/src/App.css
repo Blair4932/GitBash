@@ -145,6 +145,12 @@
 	opacity: 1;
 } */
 
+.attack-button {
+	height: 4rem;
+	width: 9rem;
+	font-size: xx-large;
+}
+
 /* round tracker */
 
 .round-tracker {
