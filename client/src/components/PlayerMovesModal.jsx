@@ -1,5 +1,3 @@
-import './player-moves-modal.css';
-
 const PlayerMovesModal = ({
 	selectedCharacter,
 	setPlayerMove,

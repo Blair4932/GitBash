@@ -1,7 +1,12 @@
 const FightButton = ({ setFightState }) => {
 	return (
-		<div>
-			<button onClick={() => setFightState(true)}>FIGHT</button>
+		<div className="fight-button-container">
+			<button
+				className="fight-button glow-on-hover metal-button"
+				onClick={() => setFightState(true)}
+			>
+				FIGHT
+			</button>
 		</div>
 	);
 };
