@@ -146,6 +146,7 @@ function App() {
 							<>
 								<HealthBar
 									playerHealth={playerHealth}
+									opponentHealth={opponentHealth}
 								/>
 								<CharacterImage
 									selectedCharacter={selectedCharacter}

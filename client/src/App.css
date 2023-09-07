@@ -117,6 +117,7 @@
 	width: 300px;
 	height: 4vh;
 	border: 0.5vh solid black;
+	display: grid;
 }
 
 .progress-bar--fill {
@@ -135,4 +136,12 @@
 
 .progress-bar--value h3 {
 	margin-left: 1vw;
+	margin-right: 1vw;
+}
+
+.opponent {
+	display: flex;
+	justify-content: end;
+	justify-self: end;
+	text-align: right;
 }
