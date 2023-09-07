@@ -3,6 +3,7 @@ import RoundCounter from '../components/RoundCounter';
 import CharacterImage from '../components/CharacterImage';
 import PlayerMovesModal from '../components/PlayerMovesModal';
 import HealthBar from '../components/HealthBar';
+import GameplayInformation from '../components/GameplayInformation';
 
 const FightStateActive = ({
 	result,
@@ -18,6 +19,7 @@ const FightStateActive = ({
 	playerMove,
 	playerHealth,
 	opponentHealth,
+	opponentMove,
 }) => {
 	return (
 		<>
@@ -46,7 +48,15 @@ const FightStateActive = ({
 				compareMoves={compareMoves}
 				fightState={fightState}
 				playerMove={playerMove}
-			/>{' '}
+			/>
+			<div className="gameplay-information">
+				<GameplayInformation
+					playerMove={playerMove}
+					opponentMove={opponentMove}
+					playerHealth={playerHealth}
+					opponentHealth={opponentHealth}
+				/>
+			</div>{' '}
 		</>
 	);
 };

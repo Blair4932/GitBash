@@ -149,6 +149,7 @@ function App() {
 									playerMove={playerMove}
 									playerHealth={playerHealth}
 									opponentHealth={opponentHealth}
+									opponentMove={opponentMove}
 								/>
 							</>
 						) : (
@@ -165,14 +166,6 @@ function App() {
 								/>
 							</>
 						)}
-						<div className="gameplay-information">
-							<GameplayInformation
-								playerMove={playerMove}
-								opponentMove={opponentMove}
-								playerHealth={playerHealth}
-								opponentHealth={opponentHealth}
-							/>
-						</div>
 					</div>
 				</>
 			)}
