@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+html {
+	font-family: 'VT323';
+}
+
 #background {
 	height: 100vh;
 	width: 100vw;
