@@ -6,10 +6,6 @@
 	font-family: 'ArcadeClassic';
 }
 
-html {
-	font-family: 'VT323';
-}
-
 #background {
 	height: 100vh;
 	width: 100vw;
@@ -79,15 +75,13 @@ html {
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0);
 	border: 1px solid black;
-	border-radius: 10px;
-	z-index: 10;
-	background-color: aliceblue;
-	width: 500px;
+	background-color: rgb(249, 249, 249);
 	max-width: 80%;
 	opacity: 0;
 	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
-	padding: 1rem;
+	padding: 10px;
 	text-align: center;
+	font-size: larger;
 }
 
 .select-move-modal.active {
@@ -95,6 +89,34 @@ html {
 	opacity: 1;
 }
 
+.modal-text {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-right: 1rem;
+}
+
+.modal-input {
+	cursor: pointer;
+	border: 1px solid #000000;
+	padding: 0.5em;
+	-webkit-appearance: none;
+	margin: 2px;
+}
+
+.modal-input:hover {
+	box-shadow: 0px 0px 10px rgba(69, 69, 69, 0.5);
+}
+
+.modal-input:checked {
+	/* background: url(data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==)
+		no-repeat center center; */
+	background-size: 9px 9px;
+	background-color: #000000;
+}
+
+.modal-input:focus {
+	outline-color: transparent;
+}
 /* .modal-overlay {
 	position: fixed;
 	top: 0;
@@ -146,7 +168,6 @@ html {
 	background-color: aliceblue;
 }
 
-
 /* Character selection grid styling */
 
 .character--grid {
@@ -162,7 +183,7 @@ html {
 	gap: 1vw;
 }
 
-.character--tile { 
+.character--tile {
 	width: 10vw;
 	height: 10vw;
 	position: relative;
@@ -200,122 +221,122 @@ html {
 }
 
 .character--tile.homer_simpson:hover::before {
-	background-image: url("../images/character_icons/homer.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/homer.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.dug:hover::before {
-	background-image: url("../images/character_icons/dug.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/dug.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.ghost_rider:hover::before {
-	background-image: url("../images/character_icons/ghost_rider.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/ghost_rider.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.garfield:hover::before {
-	background-image: url("../images/character_icons/garfield.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/garfield.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 .character--tile.iron_man:hover::before {
-	background-image: url("../images/character_icons/iron_man.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/iron_man.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.cpt_jack_sparrow:hover::before {
-	background-image: url("../images/character_icons/cpt_jack_sparrow.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/cpt_jack_sparrow.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.jasmine:hover::before {
-	background-image: url("../images/character_icons/jasmine.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/jasmine.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.mickey_mouse:hover::before {
-	background-image: url("../images/character_icons/mickey_mouse.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/mickey_mouse.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.mumble:hover::before {
-	background-image: url("../images/character_icons/mumble.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/mumble.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 .character--tile.ragey:hover::before {
-	background-image: url("../images/character_icons/ragey.jpeg");
-	content: "";
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.75;
+	background-image: url('../images/character_icons/ragey.jpeg');
+	content: '';
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
 /* fight button */
@@ -362,4 +383,3 @@ html {
 	transform: translate(0, -2px);
 	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
-
