@@ -62,12 +62,14 @@ function App() {
 
 	useEffect(() => {
 		if (playerHealth <= 0) {
+			setPlayerHealth(0);
 			setResult('loss');
 		}
 	}, [playerHealth]);
 
 	useEffect(() => {
 		if (opponentHealth <= 0) {
+			setOpponentHealth(0);
 			setResult('victory');
 		}
 	}, [opponentHealth]);
