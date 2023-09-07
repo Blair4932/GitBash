@@ -1,9 +1,13 @@
-const FightButton = ({ setFightState }) => {
+const FightButton = ({ setFightState, selectedArena }) => {
   var fightAudio = new Audio("./audio/arena_audio/fight.mp3");
+  var arenaAudio = new Audio(
+    `./audio/arena_audio/${selectedArena.file_name}.mp3`
+  );
 
   const handleFightClick = () => {
     setFightState(true);
     fightAudio.play();
+    arenaAudio.play();
   };
 
   return (

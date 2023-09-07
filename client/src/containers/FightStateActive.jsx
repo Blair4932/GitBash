@@ -30,7 +30,7 @@ const FightStateActive = ({
 		setTimeout(() => {
 			setModalVisible(true);
 			setPlayerMove('');
-		}, 3000);
+		}, 1000);
 		setModalVisible(false);
 		compareMoves();
 	};
@@ -45,13 +45,16 @@ const FightStateActive = ({
 					<RoundCounter roundTracker={roundTracker} />
 				)}
 			</div>
-			<HealthBar
-				playerHealth={playerHealth}
-				opponentHealth={opponentHealth}
-			/>
+			<div className="container">
+				<HealthBar
+					playerHealth={playerHealth}
+					opponentHealth={opponentHealth}
+				/>
+			</div>
 			<CharacterImage
 				selectedCharacter={selectedCharacter}
 				opponentCharacter={opponentCharacter}
+				fightState={fightState}
 			/>
 			{modalVisible ? (
 				<PlayerMovesModal
@@ -65,14 +68,16 @@ const FightStateActive = ({
 					playFight={playFight}
 				/>
 			) : (
-				<MovesInformation
-					playerMove={playerMove}
-					opponentMove={opponentMove}
-					opponentCharacter={opponentCharacter}
-					playerCharacter={selectedCharacter}
-					damageDealt={damageDealt}
-					winner={winner}
-				/>
+				<div className="container">
+					<MovesInformation
+						playerMove={playerMove}
+						opponentMove={opponentMove}
+						opponentCharacter={opponentCharacter}
+						playerCharacter={selectedCharacter}
+						damageDealt={damageDealt}
+						winner={winner}
+					/>
+				</div>
 			)}
 		</>
 	);
