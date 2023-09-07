@@ -1,4 +1,4 @@
-import SpecialMoveBar from "./SpecialMoveBar";
+import SpecialMoveBar from './SpecialMoveBar';
 
 const PlayerMovesModal = ({
 	selectedCharacter,
@@ -78,8 +78,11 @@ const PlayerMovesModal = ({
 						</div>
 					) : (
 						<div className="special-move--bar">
+							<p>Charging special move: </p>
 							<SpecialMoveBar
-								playerSpecialMoveCharge={playerSpecialMoveCharge}
+								playerSpecialMoveCharge={
+									playerSpecialMoveCharge
+								}
 							/>
 						</div>
 					)}
@@ -94,7 +97,12 @@ const PlayerMovesModal = ({
 						<p>Guard: {playerMove.defense}</p>
 					</div>
 				)}
-				<button className='attack-button' onClick={playerMove && playFight}>ATTACK</button>
+				<button
+					className="attack-button"
+					onClick={playerMove && playFight}
+				>
+					ATTACK
+				</button>
 			</div>
 		</div>
 	);

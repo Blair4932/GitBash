@@ -484,12 +484,13 @@
 	justify-content: center;
 }
 
-
 /* Special move bar */
 
 .special-move--bar {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	margin-bottom: 1rem;
 }
 
 /* result screen */
