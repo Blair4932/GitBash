@@ -8,8 +8,6 @@ const PlayerMovesModal = ({
 }) => {
 	const modalClassName = `select-move-modal ${fightState ? 'active' : ''}`;
 
-	console.log(playerMove);
-
 	return (
 		<div className={`modal-overlay ${fightState ? 'active' : ''}`}>
 			<div className={modalClassName}>
@@ -64,7 +62,7 @@ const PlayerMovesModal = ({
 								id="specialMove"
 								checked={
 									playerMove.name ===
-									selectedCharacter.moves.specialMove
+									selectedCharacter.moves.specialMove.name
 								}
 								onClick={() => {
 									setPlayerMove(
