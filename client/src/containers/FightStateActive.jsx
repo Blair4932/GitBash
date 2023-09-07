@@ -1,5 +1,3 @@
-import Result from '../components/Result';
-import RoundCounter from '../components/RoundCounter';
 import CharacterImage from '../components/CharacterImage';
 import PlayerMovesModal from '../components/PlayerMovesModal';
 import HealthBar from '../components/HealthBar';
@@ -34,23 +32,16 @@ const FightStateActive = ({
 		setModalVisible(false);
 		compareMoves();
 	};
+
 	return (
 		<>
-			<div className="round-tracker-container">
-				{result === 'victory' ? (
-					<Result result={result} reset={reset} />
-				) : result === 'loss' ? (
-					<Result result={result} reset={reset} />
-				) : (
-					<RoundCounter roundTracker={roundTracker} />
-				)}
-			</div>
-			<div className="container">
-				<HealthBar
-					playerHealth={playerHealth}
-					opponentHealth={opponentHealth}
-				/>
-			</div>
+			<HealthBar
+				playerHealth={playerHealth}
+				opponentHealth={opponentHealth}
+				roundTracker={roundTracker}
+				result={result}
+				opponentCharacter={opponentCharacter}
+			/>
 			<CharacterImage
 				selectedCharacter={selectedCharacter}
 				opponentCharacter={opponentCharacter}
@@ -66,6 +57,8 @@ const FightStateActive = ({
 					fightState={fightState}
 					playerMove={playerMove}
 					playFight={playFight}
+					result={result}
+					reset={reset}
 				/>
 			) : (
 				<div className="container">
