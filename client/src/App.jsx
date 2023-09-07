@@ -65,6 +65,15 @@ function App() {
     }
   }, [playerMove]);
 
+  //map through characters and set the opponentCharacter state to a random character
+  useEffect(() => {
+    if (characters.length > 0) {
+      const characterList = characters.map((character) => character);
+      const randomCharacter = Math.floor(Math.random() * characterList.length);
+      setOpponentCharacter(characterList[randomCharacter]);
+    }
+  }, [opponentCharacter]);
+
   useEffect(() => {
     if (playerHealth <= 0) {
       setPlayerHealth(0);
