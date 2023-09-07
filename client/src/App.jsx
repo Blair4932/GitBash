@@ -7,22 +7,20 @@ import GameplayInformation from "./components/GameplayInformation";
 import HealthBar from "./components/HealthBar";
 
 function App() {
-
-	const [characters, setCharacters] = useState([]);
-	const [selectedCharacter, setSelectedCharacter] = useState({});
-	const [opponentCharacter, setOpponentCharacter] = useState({});
-	const [arenas, setArenas] = useState({});
-	const [selectedArena, setSelectedArena] = useState({});
-	const [playerMove, setPlayerMove] = useState('');
-	const [opponentMove, setOpponentMove] = useState({});
-	const [playerHealth, setPlayerHealth] = useState(100);
-	const [opponentHealth, setOpponentHealth] = useState(100);
-	const [result, setResult] = useState('');
-	const [roundTracker, setRoundTracker] = useState(0);
-	const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
-	const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] =
-		useState(0);
-	const [fightState, setFightState] = useState(false);
+  const [characters, setCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState({});
+  const [opponentCharacter, setOpponentCharacter] = useState({});
+  const [arenas, setArenas] = useState({});
+  const [selectedArena, setSelectedArena] = useState({});
+  const [playerMove, setPlayerMove] = useState("");
+  const [opponentMove, setOpponentMove] = useState({});
+  const [playerHealth, setPlayerHealth] = useState(100);
+  const [opponentHealth, setOpponentHealth] = useState(100);
+  const [result, setResult] = useState("");
+  const [roundTracker, setRoundTracker] = useState(0);
+  const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
+  const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] = useState(0);
+  const [fightState, setFightState] = useState(false);
 
   const fetchCharacters = () => {
     fetch("http://localhost:9000/api/characters/")
@@ -67,20 +65,19 @@ function App() {
     }
   }, [playerMove]);
 
+  useEffect(() => {
+    if (playerHealth <= 0) {
+      setPlayerHealth(0);
+      setResult("loss");
+    }
+  }, [playerHealth]);
 
-	useEffect(() => {
-		if (playerHealth <= 0) {
-			setPlayerHealth(0);
-			setResult('loss');
-		}
-	}, [playerHealth]);
-
-	useEffect(() => {
-		if (opponentHealth <= 0) {
-			setOpponentHealth(0);
-			setResult('victory');
-		}
-	}, [opponentHealth]);
+  useEffect(() => {
+    if (opponentHealth <= 0) {
+      setOpponentHealth(0);
+      setResult("victory");
+    }
+  }, [opponentHealth]);
 
   const compareMoves = () => {
     setRoundTracker(roundTracker + 1);
@@ -115,6 +112,15 @@ function App() {
           opponentSpecialMoveCharge + (opponentMoveDamage - playerMove.defense)
         );
       }
+    }
+
+    if (opponentMove.name === opponentCharacter.moves.specialMove.name) {
+      setOpponentSpecialMoveCharge(0);
+      console.log("opponent special move charge: ", opponentSpecialMoveCharge);
+    }
+    if (playerMove.name === selectedCharacter.moves.specialMove.name) {
+      setPlayerSpecialMoveCharge(0);
+      console.log("player special move charge: ", playerSpecialMoveCharge);
     }
     setPlayerMove("");
   };
