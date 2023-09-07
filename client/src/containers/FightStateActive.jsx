@@ -30,7 +30,7 @@ const FightStateActive = ({
 		setTimeout(() => {
 			setModalVisible(true);
 			setPlayerMove('');
-		}, 3000);
+		}, 1000);
 		setModalVisible(false);
 		compareMoves();
 	};
