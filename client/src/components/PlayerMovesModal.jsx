@@ -4,7 +4,7 @@ const PlayerMovesModal = ({
 	playerMove,
 	playerSpecialMoveCharge,
 	fightState,
-	compareMoves,
+	playFight,
 }) => {
 	const modalClassName = `select-move-modal ${fightState ? 'active' : ''}`;
 
@@ -93,7 +93,7 @@ const PlayerMovesModal = ({
 						<p>Guard: {playerMove.defense}</p>
 					</div>
 				)}
-				<button onClick={playerMove && compareMoves}>ATTACK</button>
+				<button onClick={playerMove && playFight}>ATTACK</button>
 			</div>
 		</div>
 	);

@@ -3,7 +3,8 @@ import RoundCounter from '../components/RoundCounter';
 import CharacterImage from '../components/CharacterImage';
 import PlayerMovesModal from '../components/PlayerMovesModal';
 import HealthBar from '../components/HealthBar';
-import GameplayInformation from '../components/GameplayInformation';
+import MovesInformation from '../components/MovesInformation';
+import { useState } from 'react';
 
 const FightStateActive = ({
 	result,
@@ -20,7 +21,19 @@ const FightStateActive = ({
 	playerHealth,
 	opponentHealth,
 	opponentMove,
+	damageDealt,
+	winner,
 }) => {
+	const [modalVisible, setModalVisible] = useState(true);
+
+	const playFight = () => {
+		setTimeout(() => {
+			setModalVisible(true);
+			setPlayerMove('');
+		}, 3000);
+		setModalVisible(false);
+		compareMoves();
+	};
 	return (
 		<>
 			<div className="round-tracker-container">
@@ -40,23 +53,27 @@ const FightStateActive = ({
 				selectedCharacter={selectedCharacter}
 				opponentCharacter={opponentCharacter}
 			/>
-			<PlayerMovesModal
-				selectedCharacter={selectedCharacter}
-				setPlayerMove={setPlayerMove}
-				playerSpecialMoveCharge={playerSpecialMoveCharge}
-				opponentSpecialMoveCharge={opponentSpecialMoveCharge}
-				compareMoves={compareMoves}
-				fightState={fightState}
-				playerMove={playerMove}
-			/>
-			<div className="gameplay-information">
-				<GameplayInformation
+			{modalVisible ? (
+				<PlayerMovesModal
+					selectedCharacter={selectedCharacter}
+					setPlayerMove={setPlayerMove}
+					playerSpecialMoveCharge={playerSpecialMoveCharge}
+					opponentSpecialMoveCharge={opponentSpecialMoveCharge}
+					compareMoves={compareMoves}
+					fightState={fightState}
+					playerMove={playerMove}
+					playFight={playFight}
+				/>
+			) : (
+				<MovesInformation
 					playerMove={playerMove}
 					opponentMove={opponentMove}
-					playerHealth={playerHealth}
-					opponentHealth={opponentHealth}
+					opponentCharacter={opponentCharacter}
+					playerCharacter={selectedCharacter}
+					damageDealt={damageDealt}
+					winner={winner}
 				/>
-			</div>{' '}
+			)}
 		</>
 	);
 };
