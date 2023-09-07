@@ -307,7 +307,7 @@ db.characters.insertMany([
         defense: 100,
       },
       specialMove: {
-        name: "Skelly Smack",
+        name: "Pew Pew Replusor",
         damageMin: 40,
         damageMax: 50,
         defense: 0,
