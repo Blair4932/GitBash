@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-
+import arenaAudio from './components/FightButton';
 import FightStateActive from './containers/FightStateActive';
 import FightStateInactive from './containers/FightStateInactive';
 
@@ -59,11 +59,11 @@ function App() {
 			if (opponentSpecialMoveCharge >= 50) {
 				const randomMove = Math.floor(Math.random() * 4);
 				setOpponentMove(
-					characters[0].moves[moveTypesSpecial[randomMove]]
+					opponentCharacter.moves[moveTypesSpecial[randomMove]]
 				);
 			} else {
 				const randomMove = Math.floor(Math.random() * 3);
-				setOpponentMove(characters[0].moves[moveTypes[randomMove]]);
+				setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
 			}
 		}
 	}, [playerMove]);
@@ -109,6 +109,20 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
+  const compareMoves = () => {
+    setRoundTracker(roundTracker + 1);
+    setFightState(true);
+    if (playerMove.name == "Block" || opponentMove.name == "Block") {
+      setWinner("blocked");
+    } else {
+      const playerMoveDamage =
+        Math.floor(
+          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
+        ) + playerMove.damageMin;
+      const opponentMoveDamage =
+        Math.floor(
+          Math.random() * (opponentMove.damageMax - opponentMove.damageMin + 1)
+        ) + opponentMove.damageMin;
 
 			console.log('player: ', playerSpecialMoveCharge);
 			console.log('opponent: ', opponentSpecialMoveCharge);
@@ -159,6 +173,7 @@ function App() {
 		setResult(null);
 		setPlayerSpecialMoveCharge(0);
 		setOpponentSpecialMoveCharge(0);
+		location.reload();
 	};
 
 	return (
