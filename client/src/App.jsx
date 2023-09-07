@@ -97,7 +97,7 @@ function App() {
 		setRoundTracker(roundTracker + 1);
 		setFightState(true);
 		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
-			setWinner('blocked')
+			setWinner('blocked');
 		} else {
 			const playerMoveDamage =
 				Math.floor(

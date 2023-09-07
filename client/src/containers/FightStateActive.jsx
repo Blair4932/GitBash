@@ -52,6 +52,7 @@ const FightStateActive = ({
 			<CharacterImage
 				selectedCharacter={selectedCharacter}
 				opponentCharacter={opponentCharacter}
+				fightState={fightState}
 			/>
 			{modalVisible ? (
 				<PlayerMovesModal

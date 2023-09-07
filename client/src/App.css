@@ -482,3 +482,9 @@
 .round-tracker {
 	text-align: center;
 }
+
+/* character images */
+
+.character-sprite.active {
+	margin-top: 9rem;
+}
