@@ -2,6 +2,7 @@ import Result from '../components/Result';
 import RoundCounter from '../components/RoundCounter';
 import CharacterImage from '../components/CharacterImage';
 import PlayerMovesModal from '../components/PlayerMovesModal';
+import HealthBar from '../components/HealthBar';
 
 const FightStateActive = ({
 	result,
@@ -15,6 +16,8 @@ const FightStateActive = ({
 	compareMoves,
 	fightState,
 	playerMove,
+	playerHealth,
+	opponentHealth,
 }) => {
 	return (
 		<>
@@ -27,6 +30,10 @@ const FightStateActive = ({
 					<RoundCounter roundTracker={roundTracker} />
 				)}
 			</div>
+			<HealthBar
+				playerHealth={playerHealth}
+				opponentHealth={opponentHealth}
+			/>
 			<CharacterImage
 				selectedCharacter={selectedCharacter}
 				opponentCharacter={opponentCharacter}
