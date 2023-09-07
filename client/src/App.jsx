@@ -57,10 +57,10 @@ function App() {
       const moveTypesSpecial = ["punch", "kick", "block", "specialMove"];
       if (opponentSpecialMoveCharge >= 50) {
         const randomMove = Math.floor(Math.random() * 4);
-        setOpponentMove(characters[0].moves[moveTypesSpecial[randomMove]]);
+        setOpponentMove(opponentCharacter.moves[moveTypesSpecial[randomMove]]);
       } else {
         const randomMove = Math.floor(Math.random() * 3);
-        setOpponentMove(characters[0].moves[moveTypes[randomMove]]);
+        setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
       }
     }
   }, [playerMove]);
