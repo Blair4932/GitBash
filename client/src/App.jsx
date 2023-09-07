@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import CharacterSelect from './components/CharacterSelect';
-import PlayerMovesModal from './components/PlayerMovesModal';
-import CharacterImage from './components/CharacterImage';
-import ArenaSelect from './components/ArenaSelect';
-import ArenaImage from './components/ArenaImage';
-import RoundCounter from './components/RoundCounter';
-import Result from './components/Result';
-import FightButton from './components/FightButton';
+import FightStateActive from './containers/FightStateActive';
+import FightStateInactive from './containers/FightStateInactive';
+import GameplayInformation from './components/GameplayInformation';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -134,23 +129,12 @@ function App() {
 					<div id="background" className={selectedArena.file_name}>
 						{fightState ? (
 							<>
-								<div className="round-tracker-container">
-									{result === 'victory' ? (
-										<Result result={result} reset={reset} />
-									) : result === 'loss' ? (
-										<Result result={result} reset={reset} />
-									) : (
-										<RoundCounter
-											roundTracker={roundTracker}
-										/>
-									)}
-								</div>
-								<CharacterImage
+								<FightStateActive
+									result={result}
+									reset={reset}
+									roundTracker={roundTracker}
 									selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}
-								/>
-								<PlayerMovesModal
-									selectedCharacter={selectedCharacter}
 									setPlayerMove={setPlayerMove}
 									playerSpecialMoveCharge={
 										playerSpecialMoveCharge
@@ -165,39 +149,25 @@ function App() {
 							</>
 						) : (
 							<>
-								<ArenaSelect
+								<FightStateInactive
 									arenas={arenas}
-									setSelectedArena={setSelectedArena}
 									selectedArena={selectedArena}
-								/>
-								<FightButton setFightState={setFightState} />
-								<CharacterImage
-									selectedCharacter={selectedCharacter}
-									opponentCharacter={opponentCharacter}
-								/>
-								<CharacterSelect
-									characters={characters}
+									setSelectedArena={setSelectedArena}
+									setFightState={setFightState}
 									setSelectedCharacter={setSelectedCharacter}
+									characters={characters}
+									opponentCharacter={opponentCharacter}
+									selectedCharacter={selectedCharacter}
 								/>
 							</>
 						)}
 						<div className="gameplay-information">
-							<p>
-								<b>Your move: </b>
-							</p>
-							<p>{playerMove.name}</p>
-							<p>
-								<b>Opponents move: </b>
-							</p>
-							<p>{opponentMove.name}</p>
-							<p>
-								<b>Your health: </b>
-							</p>
-							<p>{playerHealth}</p>
-							<p>
-								<b>Opponents health: </b>
-							</p>
-							<p>{opponentHealth}</p>
+							<GameplayInformation
+								playerMove={playerMove}
+								opponentMove={opponentMove}
+								playerHealth={playerHealth}
+								opponentHealth={opponentHealth}
+							/>
 						</div>
 					</div>
 				</>
