@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import arenaAudio from './components/FightButton';
 import FightStateActive from './containers/FightStateActive';
 import FightStateInactive from './containers/FightStateInactive';
 
@@ -8,7 +7,7 @@ function App() {
 	const [characters, setCharacters] = useState([]);
 	const [selectedCharacter, setSelectedCharacter] = useState({});
 	const [opponentCharacter, setOpponentCharacter] = useState({});
-	const [arenas, setArenas] = useState({});
+	const [arenas, setArenas] = useState([]);
 	const [selectedArena, setSelectedArena] = useState({});
 	const [playerMove, setPlayerMove] = useState('');
 	const [opponentMove, setOpponentMove] = useState({});
@@ -28,8 +27,6 @@ function App() {
 			.then((res) => res.json())
 			.then((data) => {
 				setCharacters(data);
-				console.log(data);
-				console.log(characters);
 				setSelectedCharacter(data[0]);
 				setOpponentCharacter(data[0]);
 			});
@@ -46,9 +43,6 @@ function App() {
 
 	useEffect(() => {
 		fetchArenas();
-	}, []);
-
-	useEffect(() => {
 		fetchCharacters();
 	}, []);
 
@@ -66,9 +60,8 @@ function App() {
 				setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
 			}
 		}
-	}, [playerMove]);
+	}, [playerMove, opponentSpecialMoveCharge, opponentCharacter]);
 
-	//map through characters and set the opponentCharacter state to a random character
 	useEffect(() => {
 		if (characters.length > 0) {
 			const characterList = characters.map((character) => character);
@@ -77,7 +70,7 @@ function App() {
 			);
 			setOpponentCharacter(characterList[randomCharacter]);
 		}
-	}, [opponentCharacter]);
+	}, [characters]);
 
 	useEffect(() => {
 		if (playerHealth <= 0) {
@@ -96,7 +89,7 @@ function App() {
 	const compareMoves = () => {
 		setRoundTracker(roundTracker + 1);
 		setFightState(true);
-		if (playerMove.name == 'Block' || opponentMove.name == 'Block') {
+		if (playerMove.name === 'Block' || opponentMove.name === 'Block') {
 			setWinner('blocked');
 		} else {
 			const playerMoveDamage =
@@ -109,23 +102,6 @@ function App() {
 					Math.random() *
 						(opponentMove.damageMax - opponentMove.damageMin + 1)
 				) + opponentMove.damageMin;
-  const compareMoves = () => {
-    setRoundTracker(roundTracker + 1);
-    setFightState(true);
-    if (playerMove.name == "Block" || opponentMove.name == "Block") {
-      setWinner("blocked");
-    } else {
-      const playerMoveDamage =
-        Math.floor(
-          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
-        ) + playerMove.damageMin;
-      const opponentMoveDamage =
-        Math.floor(
-          Math.random() * (opponentMove.damageMax - opponentMove.damageMin + 1)
-        ) + opponentMove.damageMin;
-
-			console.log('player: ', playerSpecialMoveCharge);
-			console.log('opponent: ', opponentSpecialMoveCharge);
 
 			if (playerMoveDamage > opponentMoveDamage) {
 				const damageDealt = playerMoveDamage - opponentMove.defense;
@@ -150,19 +126,12 @@ function App() {
 
 		if (opponentMove.name === opponentCharacter.moves.specialMove.name) {
 			setOpponentSpecialMoveCharge(0);
-			console.log(
-				'opponent special move charge: ',
-				opponentSpecialMoveCharge
-			);
 		}
 		if (playerMove.name === selectedCharacter.moves.specialMove.name) {
 			setPlayerSpecialMoveCharge(0);
-			console.log(
-				'player special move charge: ',
-				playerSpecialMoveCharge
-			);
 		}
 	};
+
 	const reset = () => {
 		setFightState(false);
 		setSelectedArena(arenas[0]);
@@ -173,55 +142,49 @@ function App() {
 		setResult(null);
 		setPlayerSpecialMoveCharge(0);
 		setOpponentSpecialMoveCharge(0);
+		setDamageDealt(0);
+		setWinner(null);
 		location.reload();
 	};
 
 	return (
 		<div>
 			{characters.length > 0 && (
-				<>
-					<div id="background" className={selectedArena.file_name}>
-						{fightState ? (
-							<>
-								<FightStateActive
-									result={result}
-									reset={reset}
-									roundTracker={roundTracker}
-									selectedCharacter={selectedCharacter}
-									opponentCharacter={opponentCharacter}
-									setPlayerMove={setPlayerMove}
-									playerSpecialMoveCharge={
-										playerSpecialMoveCharge
-									}
-									opponentSpecialMoveCharge={
-										opponentSpecialMoveCharge
-									}
-									compareMoves={compareMoves}
-									fightState={fightState}
-									playerMove={playerMove}
-									playerHealth={playerHealth}
-									opponentHealth={opponentHealth}
-									opponentMove={opponentMove}
-									damageDealt={damageDealt}
-									winner={winner}
-								/>
-							</>
-						) : (
-							<>
-								<FightStateInactive
-									arenas={arenas}
-									selectedArena={selectedArena}
-									setSelectedArena={setSelectedArena}
-									setFightState={setFightState}
-									setSelectedCharacter={setSelectedCharacter}
-									characters={characters}
-									opponentCharacter={opponentCharacter}
-									selectedCharacter={selectedCharacter}
-								/>
-							</>
-						)}
-					</div>
-				</>
+				<div id="background" className={selectedArena.file_name}>
+					{fightState ? (
+						<FightStateActive
+							result={result}
+							reset={reset}
+							roundTracker={roundTracker}
+							selectedCharacter={selectedCharacter}
+							opponentCharacter={opponentCharacter}
+							setPlayerMove={setPlayerMove}
+							playerSpecialMoveCharge={playerSpecialMoveCharge}
+							opponentSpecialMoveCharge={
+								opponentSpecialMoveCharge
+							}
+							compareMoves={compareMoves}
+							fightState={fightState}
+							playerMove={playerMove}
+							playerHealth={playerHealth}
+							opponentHealth={opponentHealth}
+							opponentMove={opponentMove}
+							damageDealt={damageDealt}
+							winner={winner}
+						/>
+					) : (
+						<FightStateInactive
+							arenas={arenas}
+							selectedArena={selectedArena}
+							setSelectedArena={setSelectedArena}
+							setFightState={setFightState}
+							setSelectedCharacter={setSelectedCharacter}
+							characters={characters}
+							opponentCharacter={opponentCharacter}
+							selectedCharacter={selectedCharacter}
+						/>
+					)}
+				</div>
 			)}
 		</div>
 	);
