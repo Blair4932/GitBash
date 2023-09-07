@@ -62,6 +62,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	margin-top: 1.5vh;
 }
 
 .ArenaList {
@@ -160,9 +161,11 @@
 .character-image-container {
 	display: flex;
 	justify-content: space-between;
-	margin-left: 5rem;
-	margin-right: 5rem;
-	margin-top: 10rem;
+	padding-left: 5rem;
+	padding-right: 5rem;
+	padding-top: 10rem;
+	position: absolute;
+	width: calc(100vw - 10rem);
 }
 
 /* Progress Bar */
@@ -210,8 +213,6 @@
 /* Character selection grid styling */
 
 .character--grid {
-	align-self: center;
-	justify-self: center;
 	justify-content: center;
 	list-style: none;
 	display: flex;
@@ -220,6 +221,8 @@
 	height: auto;
 	margin: auto;
 	gap: 1vw;
+	position: absolute;
+	padding-top: 3vh;
 }
 
 .character--tile {
@@ -230,6 +233,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background: #aaaaaa7c;
+	border-radius: 10px;
 }
 
 .tile--button {
@@ -447,6 +452,7 @@
 	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
 
+
 /* move information */
 
 .move-information-container {
@@ -461,3 +467,9 @@
 	text-align: center;
 	font-size: larger;
 }
+
+.container--character-select-icons {
+	display: flex;
+	justify-content: center;
+}
+

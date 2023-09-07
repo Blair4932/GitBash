@@ -21,14 +21,16 @@ const FightStateInactive = ({
 				selectedArena={selectedArena}
 			/>
 			<FightButton setFightState={setFightState} />
-			<CharacterImage
-				selectedCharacter={selectedCharacter}
-				opponentCharacter={opponentCharacter}
-			/>
-			<CharacterSelect
-				characters={characters}
-				setSelectedCharacter={setSelectedCharacter}
-			/>
+			<div className="container--character-select-icons">
+				<CharacterImage
+					selectedCharacter={selectedCharacter}
+					opponentCharacter={opponentCharacter}
+				/>
+				<CharacterSelect
+					characters={characters}
+					setSelectedCharacter={setSelectedCharacter}
+				/>
+			</div>
 		</>
 	);
 };
