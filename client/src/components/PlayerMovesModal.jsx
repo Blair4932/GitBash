@@ -85,14 +85,17 @@ const PlayerMovesModal = ({
 						</div>
 					)}
 				</div>
-				<div className="move-stats">
-					<h3>{playerMove.name} stats: </h3>
-					<p>
-						Damage: {playerMove.damageMin} - {playerMove.damageMax}
-					</p>
-					<p>Guard: {playerMove.defense}</p>
-				</div>
-				<button onClick={compareMoves}>ATTACK</button>
+				{playerMove && (
+					<div className="move-stats">
+						<h3>{playerMove.name} stats: </h3>
+						<p>
+							Damage: {playerMove.damageMin} -{' '}
+							{playerMove.damageMax}
+						</p>
+						<p>Guard: {playerMove.defense}</p>
+					</div>
+				)}
+				<button onClick={playerMove && compareMoves}>ATTACK</button>
 			</div>
 		</div>
 	);
