@@ -12,6 +12,11 @@
 	width: 100vw;
 }
 
+.container {
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
 .china {
 	background-image: url('/images/arenas/china.gif');
 	background-size: cover;
