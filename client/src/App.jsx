@@ -8,6 +8,7 @@ import ArenaImage from './components/ArenaImage';
 import RoundCounter from './components/RoundCounter';
 import Result from './components/Result';
 import FightButton from './components/FightButton';
+import HealthBar from './components/HealthBar';
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -134,6 +135,11 @@ function App() {
 					<div id="background" className={selectedArena.file_name}>
 						{fightState ? (
 							<>
+								<HealthBar
+									playerHealth={playerHealth}
+									opponentHealth={opponentHealth}
+								/>
+
 								<div className="round-tracker-container">
 									{result === 'victory' ? (
 										<Result result={result} reset={reset} />
@@ -145,6 +151,7 @@ function App() {
 										/>
 									)}
 								</div>
+
 								<CharacterImage
 									selectedCharacter={selectedCharacter}
 									opponentCharacter={opponentCharacter}
