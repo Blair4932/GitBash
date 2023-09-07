@@ -1,7 +1,7 @@
 const Result = ({ result, reset }) => {
 	return (
 		<div className="round-tracker">
-			{result == 'Victory' ? (
+			{result == 'victory' ? (
 				<div>
 					<h3>You Win!</h3>
 					<button onClick={reset}>Play again?</button>
