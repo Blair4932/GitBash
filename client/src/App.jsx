@@ -12,7 +12,7 @@ function App() {
 	const [opponentCharacter, setOpponentCharacter] = useState({});
 	const [arenas, setArenas] = useState({});
 	const [selectedArena, setSelectedArena] = useState({});
-	const [playerMove, setPlayerMove] = useState({});
+	const [playerMove, setPlayerMove] = useState('');
 	const [opponentMove, setOpponentMove] = useState({});
 	const [playerHealth, setPlayerHealth] = useState(100);
 	const [opponentHealth, setOpponentHealth] = useState(100);

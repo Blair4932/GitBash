@@ -92,7 +92,7 @@ const PlayerMovesModal = ({
 					</p>
 					<p>Guard: {playerMove.defense}</p>
 				</div>
-				<button onClick={compareMoves}>ATTACK</button>
+				<button onClick={playerMove && compareMoves}>ATTACK</button>
 			</div>
 		</div>
 	);
