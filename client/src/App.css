@@ -478,6 +478,14 @@
 	justify-content: center;
 }
 
+
+/* Special move bar */
+
+.special-move--bar {
+	display: flex;
+	justify-content: center;
+}
+
 /* result screen */
 
 .result-hero-text {

@@ -1,3 +1,5 @@
+import SpecialMoveBar from "./SpecialMoveBar";
+
 const PlayerMovesModal = ({
 	selectedCharacter,
 	setPlayerMove,
@@ -75,11 +77,10 @@ const PlayerMovesModal = ({
 							</label>
 						</div>
 					) : (
-						<div>
-							<p className="modal-text">
-								Your special move charge:{' '}
-								{playerSpecialMoveCharge}
-							</p>
+						<div className="special-move--bar">
+							<SpecialMoveBar
+								playerSpecialMoveCharge={playerSpecialMoveCharge}
+							/>
 						</div>
 					)}
 				</div>
