@@ -7,10 +7,9 @@ const ArenaSelect = ({ arenas, setSelectedArena }) => {
             className={`arenaButton ${arena.file_name}`}
             onClick={() => {
               setSelectedArena(arena);
-              console.log("This is an arena", arena);
             }}
           >
-            {arena.name}
+            <p className="arenaButtonText">{arena.name}</p>
           </button>
         </li>
       ))}
