@@ -4,7 +4,7 @@ const SpecialMoveBar = ({ playerSpecialMoveCharge }) => {
 
     return (
         <>
-            <div className="progress-bar" style={{height: "2vh", width: "25vw"}}>
+            <div className="progress-bar" style={{height: "2vh", width: "250px"}}>
                 <div className="progress-bar--value">
                     <h3>{playerSpecialMoveCharge}</h3>
                 </div>
