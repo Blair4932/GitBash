@@ -79,13 +79,14 @@ function App() {
   //   }
   // }, [playerMove, opponentSpecialMoveCharge, opponentCharacter]);
 
-  useEffect(() => {
-    if (characters.length > 0) {
-      const characterList = characters.map((character) => character);
-      const randomCharacter = Math.floor(Math.random() * characterList.length);
-      setOpponentCharacter(characterList[randomCharacter]);
-    }
-  }, [characters]);
+
+  // useEffect(() => {
+  //   if (characters.length > 0) {
+  //     const characterList = characters.map((character) => character);
+  //     const randomCharacter = Math.floor(Math.random() * characterList.length);
+  //     setOpponentCharacter(characterList[randomCharacter]);
+  //   }
+  // }, [characters]);
 
   useEffect(() => {
     if (playerHealth <= 0) {
@@ -208,6 +209,8 @@ function App() {
               joinRoom={joinRoom}
               setRoom={setRoom}
               room={room}
+              socket={socket}
+              setOpponentCharacter={setOpponentCharacter}
             />
           )}
         </div>

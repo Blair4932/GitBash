@@ -41,6 +41,11 @@ io.on("connection", (socket) => {
     console.log(`User Joined Room: ${room}`);
   });
 
+  socket.on("send_character", (character) => {
+    console.log(character);
+    socket.to(character.room).emit("receive_character", character);
+  });
+
   socket.on("send_move", (move) => {
     console.log(move)
     socket.to(move.room).emit("receive_move", move);
