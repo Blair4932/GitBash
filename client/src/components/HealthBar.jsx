@@ -23,7 +23,7 @@ const HealthBar = ({
 				</div>
 				<RoundCounter roundTracker={roundTracker} result={result} />
 				<div className="container--progress-bar">
-					<h1 className="health-text">
+					<h1 className="health-text opponent">
 						{opponentCharacter.name}'s Health
 					</h1>
 					<div className="progress-bar">
