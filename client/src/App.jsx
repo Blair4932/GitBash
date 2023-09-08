@@ -63,19 +63,19 @@ function App() {
     fetchCharacters();
   }, []);
 
-  useEffect(() => {
-    if (characters.length > 0) {
-      const moveTypes = ["punch", "kick", "block"];
-      const moveTypesSpecial = ["punch", "kick", "block", "specialMove"];
-      if (opponentSpecialMoveCharge >= 50) {
-        const randomMove = Math.floor(Math.random() * 4);
-        setOpponentMove(opponentCharacter.moves[moveTypesSpecial[randomMove]]);
-      } else {
-        const randomMove = Math.floor(Math.random() * 3);
-        setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
-      }
-    }
-  }, [playerMove, opponentSpecialMoveCharge, opponentCharacter]);
+  // useEffect(() => {
+  //   if (characters.length > 0) {
+  //     const moveTypes = ["punch", "kick", "block"];
+  //     const moveTypesSpecial = ["punch", "kick", "block", "specialMove"];
+  //     if (opponentSpecialMoveCharge >= 50) {
+  //       const randomMove = Math.floor(Math.random() * 4);
+  //       setOpponentMove(opponentCharacter.moves[moveTypesSpecial[randomMove]]);
+  //     } else {
+  //       const randomMove = Math.floor(Math.random() * 3);
+  //       setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
+  //     }
+  //   }
+  // }, [playerMove, opponentSpecialMoveCharge, opponentCharacter]);
 
   useEffect(() => {
     if (characters.length > 0) {
@@ -190,6 +190,7 @@ function App() {
               winner={winner}
               socket={socket}
               room={room}
+              setOpponentMove={setOpponentMove}
             />
           ) : (
             <FightStateInactive

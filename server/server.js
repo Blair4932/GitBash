@@ -40,6 +40,7 @@ io.on("connection", (socket) => {
 
   socket.on("send_move", (move) => {
     console.log(move);
+    socket.to(move.room).emit("receive_move", move);
   });
 
   socket.on("disconnect", () => {

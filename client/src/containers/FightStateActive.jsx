@@ -2,7 +2,7 @@ import CharacterImage from "../components/CharacterImage";
 import PlayerMovesModal from "../components/PlayerMovesModal";
 import HealthBar from "../components/HealthBar";
 import MovesInformation from "../components/MovesInformation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FightStateActive = ({
   result,
@@ -23,6 +23,7 @@ const FightStateActive = ({
   winner,
   socket,
   room,
+  setOpponentMove,
 }) => {
   const [modalVisible, setModalVisible] = useState(true);
 
@@ -35,6 +36,14 @@ const FightStateActive = ({
       await socket.emit("send_move", moveData);
     }
   };
+
+  useEffect(() => {
+    socket.on("receive_move", (moveData) => {
+      setOpponentMove(moveData.playerMove);
+    });
+  }, [socket]);
+
+  console.log("This is the opponent's move from server", opponentMove);
 
   const playFight = () => {
     setTimeout(() => {
