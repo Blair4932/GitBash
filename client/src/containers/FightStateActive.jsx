@@ -24,6 +24,7 @@ const FightStateActive = ({
   socket,
   room,
   setOpponentMove,
+  setWinner,
 }) => {
   const [modalVisible, setModalVisible] = useState(true);
 
@@ -48,9 +49,12 @@ const FightStateActive = ({
       console.log("This is the opponent's move from server", opponentMove);
       compareMoves();
 
-      setPlayerMove("");
-      setOpponentMove("");
-      setModalVisible(true);
+      setTimeout(() => {
+        setWinner("");
+        setPlayerMove("");
+        setOpponentMove("");
+        setModalVisible(true);
+      }, 1000);
     }
   }, [opponentMove, modalVisible]);
 

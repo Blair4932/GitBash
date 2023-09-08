@@ -4,7 +4,7 @@ import FightStateActive from "./containers/FightStateActive";
 import FightStateInactive from "./containers/FightStateInactive";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:9000");
+const socket = io("http://172.20.10.2:9000");
 socket.on("connect", () => {
   console.log("connected to server");
   socket.emit("message", "hello from client");
@@ -40,7 +40,7 @@ function App() {
   };
 
   const fetchCharacters = () => {
-    fetch("http://localhost:9000/api/characters/")
+    fetch("http://172.20.10.2:9000/api/characters/")
       .then((res) => res.json())
       .then((data) => {
         setCharacters(data);
@@ -50,7 +50,7 @@ function App() {
   };
 
   const fetchArenas = () => {
-    fetch("http://localhost:9000/api/arenas/")
+    fetch("http://172.20.10.2:9000/api/arenas/")
       .then((res) => res.json())
       .then((data) => {
         setArenas(data);
@@ -195,6 +195,7 @@ function App() {
               socket={socket}
               room={room}
               setOpponentMove={setOpponentMove}
+              setWinner={setWinner}
             />
           ) : (
             <FightStateInactive

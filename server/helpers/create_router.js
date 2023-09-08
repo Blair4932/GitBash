@@ -5,6 +5,7 @@ const createRouter = function (collection) {
   const router = express.Router();
 
   router.get("/", (req, res) => {
+    console.log("test");
     collection
       .find()
       .toArray()
