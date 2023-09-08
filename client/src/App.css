@@ -516,3 +516,8 @@
 .health-text {
 	color: white;
 }
+
+.room_input {
+	z-index: 100;
+	position: relative;
+}

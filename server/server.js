@@ -1,5 +1,15 @@
 const express = require("express");
 const app = express();
+const http = require("http");
+const { Server } = require("socket.io");
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  },
+});
 
 const cors = require("cors");
 const createRouter = require("./helpers/create_router.js");
@@ -20,6 +30,23 @@ MongoClient.connect("mongodb://localhost:27017", {
   app.use("/api/arenas", arenasRouter);
 });
 
-app.listen(9000, function () {
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
+  socket.on("join_room", (room) => {
+    socket.join(room);
+    console.log(`User Joined Room: ${room}`);
+  });
+
+  socket.on("send_move", (move) => {
+    console.log(move);
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`User Disconnected: ${socket.id}`);
+  });
+});
+
+server.listen(9000, function () {
   console.log(`Listening on port ${this.address().port}`);
 });

@@ -2,6 +2,9 @@ import ArenaSelect from "../components/ArenaSelect";
 import FightButton from "../components/FightButton";
 import CharacterImage from "../components/CharacterImage";
 import CharacterSelect from "../components/CharacterSelect";
+import joinRoom from "../App.jsx";
+import EnterRoom from "../components/EnterRoom";
+import setRoom from "../App.jsx";
 
 const FightStateInactive = ({
   arenas,
@@ -12,6 +15,9 @@ const FightStateInactive = ({
   characters,
   opponentCharacter,
   selectedCharacter,
+  joinRoom,
+  setRoom,
+  room,
 }) => {
   return (
     <>
@@ -23,6 +29,7 @@ const FightStateInactive = ({
       <FightButton
         setFightState={setFightState}
         selectedArena={selectedArena}
+        joinRoom={joinRoom}
       />
       <div className="container--character-select-icons">
         <CharacterImage
@@ -33,6 +40,7 @@ const FightStateInactive = ({
           characters={characters}
           setSelectedCharacter={setSelectedCharacter}
         />
+        <EnterRoom setRoom={setRoom} joinRoom={joinRoom} room={room} />
       </div>
     </>
   );

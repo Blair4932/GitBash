@@ -14,7 +14,9 @@ const FightButton = ({ setFightState, selectedArena }) => {
     <div className="fight-button-container">
       <button
         className="fight-button glow-on-hover metal-button"
-        onClick={handleFightClick}
+        onClick={() => {
+          handleFightClick();
+        }}
       >
         FIGHT
       </button>
