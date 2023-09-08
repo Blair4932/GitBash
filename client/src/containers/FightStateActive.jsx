@@ -43,15 +43,25 @@ const FightStateActive = ({
     });
   }, [socket]);
 
-  console.log("This is the opponent's move from server", opponentMove);
+  useEffect(() => {
+    if (opponentMove && playerMove) {
+      console.log("This is the opponent's move from server", opponentMove);
+      compareMoves();
 
-  const playFight = () => {
-    setTimeout(() => {
-      setModalVisible(true);
       setPlayerMove("");
-    }, 1000);
+      setOpponentMove("");
+      setModalVisible(true);
+    }
+  }, [opponentMove, modalVisible]);
+
+  console.log(
+    "This is the opponent's move from server but outside if statement",
+    opponentMove
+  );
+
+  const playFight = async () => {
     setModalVisible(false);
-    compareMoves();
+    console.log("Comparing moves...");
   };
 
   return (

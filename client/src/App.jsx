@@ -20,7 +20,7 @@ function App() {
   const [arenas, setArenas] = useState([]);
   const [selectedArena, setSelectedArena] = useState({});
   const [playerMove, setPlayerMove] = useState("");
-  const [opponentMove, setOpponentMove] = useState({});
+  const [opponentMove, setOpponentMove] = useState("");
   const [playerHealth, setPlayerHealth] = useState(100);
   const [opponentHealth, setOpponentHealth] = useState(100);
   const [result, setResult] = useState("");
@@ -104,50 +104,54 @@ function App() {
   const compareMoves = () => {
     setRoundTracker(roundTracker + 1);
     setFightState(true);
-    if (playerMove.name === "Block" || opponentMove.name === "Block") {
-      setWinner("blocked");
-    } else {
-      const playerMoveDamage =
-        Math.floor(
-          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
-        ) + playerMove.damageMin;
-      const opponentMoveDamage =
-        Math.floor(
-          Math.random() * (opponentMove.damageMax - opponentMove.damageMin + 1)
-        ) + opponentMove.damageMin;
-
-      if (playerMoveDamage > opponentMoveDamage) {
-        const damageDealt = playerMoveDamage - opponentMove.defense;
-        setOpponentHealth(opponentHealth - damageDealt);
-        setPlayerSpecialMoveCharge(
-          playerSpecialMoveCharge + (playerMoveDamage - opponentMove.defense)
-        );
-        setDamageDealt(damageDealt);
-        setWinner("player");
-        const hitAudio = new Audio(
-          `./audio/character_audio/${opponentCharacter.file_name}/${opponentCharacter.file_name}_hit.mp3`
-        );
-        hitAudio.play();
+    if (opponentMove) {
+      if (playerMove.name === "Block" || opponentMove.name === "Block") {
+        setWinner("blocked");
       } else {
-        const damageDealt = opponentMoveDamage - playerMove.defense;
-        setPlayerHealth(playerHealth - damageDealt);
-        setOpponentSpecialMoveCharge(
-          opponentSpecialMoveCharge + (opponentMoveDamage - playerMove.defense)
-        );
-        setDamageDealt(damageDealt);
-        setWinner("opponent");
-        const hitAudio = new Audio(
-          `./audio/character_audio/${selectedCharacter.file_name}/${selectedCharacter.file_name}_hit.mp3`
-        );
-        hitAudio.play();
-      }
-    }
+        const playerMoveDamage =
+          Math.floor(
+            Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
+          ) + playerMove.damageMin;
+        const opponentMoveDamage =
+          Math.floor(
+            Math.random() *
+              (opponentMove.damageMax - opponentMove.damageMin + 1)
+          ) + opponentMove.damageMin;
 
-    if (opponentMove.name === opponentCharacter.moves.specialMove.name) {
-      setOpponentSpecialMoveCharge(0);
-    }
-    if (playerMove.name === selectedCharacter.moves.specialMove.name) {
-      setPlayerSpecialMoveCharge(0);
+        if (playerMoveDamage > opponentMoveDamage) {
+          const damageDealt = playerMoveDamage - opponentMove.defense;
+          setOpponentHealth(opponentHealth - damageDealt);
+          setPlayerSpecialMoveCharge(
+            playerSpecialMoveCharge + (playerMoveDamage - opponentMove.defense)
+          );
+          setDamageDealt(damageDealt);
+          setWinner("player");
+          const hitAudio = new Audio(
+            `./audio/character_audio/${opponentCharacter.file_name}/${opponentCharacter.file_name}_hit.mp3`
+          );
+          hitAudio.play();
+        } else {
+          const damageDealt = opponentMoveDamage - playerMove.defense;
+          setPlayerHealth(playerHealth - damageDealt);
+          setOpponentSpecialMoveCharge(
+            opponentSpecialMoveCharge +
+              (opponentMoveDamage - playerMove.defense)
+          );
+          setDamageDealt(damageDealt);
+          setWinner("opponent");
+          const hitAudio = new Audio(
+            `./audio/character_audio/${selectedCharacter.file_name}/${selectedCharacter.file_name}_hit.mp3`
+          );
+          hitAudio.play();
+        }
+      }
+
+      if (opponentMove.name === opponentCharacter.moves.specialMove.name) {
+        setOpponentSpecialMoveCharge(0);
+      }
+      if (playerMove.name === selectedCharacter.moves.specialMove.name) {
+        setPlayerSpecialMoveCharge(0);
+      }
     }
   };
 
