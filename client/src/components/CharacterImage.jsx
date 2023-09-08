@@ -11,8 +11,12 @@ const CharacterImage = ({
 				className={`character-sprite ${fightState ? 'active' : ''}`}
 			/>
 			<img
-				src={`./images/character_sprites/${opponentCharacter.file_name}/${opponentCharacter.file_name}_default_inverted.gif`}
-				height="275px"
+				src={`${
+					fightState
+						? `./images/character_sprites/${opponentCharacter.file_name}/${opponentCharacter.file_name}_default_inverted.gif`
+						: './images/character_sprites/question_mark/question_mark.gif'
+				}`}
+				height={`${fightState ? `275px` : `300px`}`}
 				className={`character-sprite ${fightState ? 'active' : ''}`}
 			/>
 		</div>
