@@ -17,7 +17,7 @@ const MovesInformation = ({
 					</h2>
 				</div>
 			) : winner === 'opponent' ? (
-				<div className="move-information">
+				<div className="opponent-move-information">
 					<h1>
 						<b>{opponentCharacter.name}</b>
 					</h1>
