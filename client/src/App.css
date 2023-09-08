@@ -95,6 +95,7 @@
 	padding: 10px;
 	text-align: center;
 	font-size: larger;
+	margin-top: 3rem;
 }
 
 .select-move-modal.active {
@@ -158,13 +159,18 @@
 /* round tracker */
 
 .round-tracker {
-	border: white 2px solid;
 	font-size: large;
 	font-weight: bold;
 	display: inline;
-	background-color: rgb(244, 6, 46);
 	padding: 1rem;
 	text-align: center;
+	background: -webkit-linear-gradient(rgb(241, 12, 12), rgb(212, 181, 4));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.round-number {
+	font-size: 5rem;
 }
 
 /* character images */
@@ -463,6 +469,8 @@
 .move-information-container {
 	display: flex;
 	justify-content: space-between;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .move-information {
@@ -507,9 +515,9 @@
 
 /* character images */
 
-.character-sprite.active {
-	margin-top: 9rem;
-}
+/* .character-sprite.active {
+	margin-top: rem;
+} */
 
 /* health bar */
 
