@@ -21,7 +21,7 @@ app.use(cors());
 MongoClient.connect("mongodb://localhost:27017", {
   useUnifiedTopology: true,
 }).then((client) => {
-  server.listen(9000, "172.20.10.2", function () {
+  server.listen(9000, "192.168.1.245", function () {
     console.log(`Listening on port ${this.address().port}`);
   });
   const db = client.db("GitBash");
@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_move", (move) => {
-    console.log(move);
+    console.log(move)
     socket.to(move.room).emit("receive_move", move);
   });
 

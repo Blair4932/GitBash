@@ -25,14 +25,24 @@ const FightStateActive = ({
   room,
   setOpponentMove,
   setWinner,
+  setOpponentMoveDamage,
+  setPlayerMoveDamage,
 }) => {
   const [modalVisible, setModalVisible] = useState(true);
 
   const sendFightInfo = async () => {
     if (playerMove) {
+      const playerMoveDamage =
+        Math.floor(
+          Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
+        ) + playerMove.damageMin;
+
+      setPlayerMoveDamage(playerMoveDamage)
+
       const moveData = {
         room: room,
         playerMove: playerMove,
+        damage: playerMoveDamage,
       };
       await socket.emit("send_move", moveData);
     }
@@ -41,6 +51,7 @@ const FightStateActive = ({
   useEffect(() => {
     socket.on("receive_move", (moveData) => {
       setOpponentMove(moveData.playerMove);
+      setOpponentMoveDamage(moveData.damage)
     });
   }, [socket]);
 

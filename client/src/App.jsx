@@ -4,7 +4,7 @@ import FightStateActive from "./containers/FightStateActive";
 import FightStateInactive from "./containers/FightStateInactive";
 import io from "socket.io-client";
 
-const socket = io("http://172.20.10.2:9000");
+const socket = io("http://192.168.1.245:9000");
 socket.on("connect", () => {
   console.log("connected to server");
   socket.emit("message", "hello from client");
@@ -31,6 +31,8 @@ function App() {
   const [damageDealt, setDamageDealt] = useState(0);
   const [winner, setWinner] = useState(null);
   const [room, setRoom] = useState("");
+  const [opponentMoveDamage, setOpponentMoveDamage] = useState(0);
+  const [playerMoveDamage, setPlayerMoveDamage] = useState(0);
 
   const joinRoom = () => {
     if (room) {
@@ -40,7 +42,7 @@ function App() {
   };
 
   const fetchCharacters = () => {
-    fetch("http://172.20.10.2:9000/api/characters/")
+    fetch("http://192.168.1.245:9000/api/characters/")
       .then((res) => res.json())
       .then((data) => {
         setCharacters(data);
@@ -50,7 +52,7 @@ function App() {
   };
 
   const fetchArenas = () => {
-    fetch("http://172.20.10.2:9000/api/arenas/")
+    fetch("http://192.168.1.245:9000/api/arenas/")
       .then((res) => res.json())
       .then((data) => {
         setArenas(data);
@@ -104,47 +106,42 @@ function App() {
   const compareMoves = () => {
     setRoundTracker(roundTracker + 1);
     setFightState(true);
-    if (opponentMove) {
-      if (playerMove.name === "Block" || opponentMove.name === "Block") {
-        setWinner("blocked");
-      } else {
-        const playerMoveDamage =
-          Math.floor(
-            Math.random() * (playerMove.damageMax - playerMove.damageMin + 1)
-          ) + playerMove.damageMin;
-        const opponentMoveDamage =
-          Math.floor(
-            Math.random() *
-              (opponentMove.damageMax - opponentMove.damageMin + 1)
-          ) + opponentMove.damageMin;
+    if (playerMove.name === "Block" || opponentMove.name === "Block") {
+      setWinner("blocked");
+    } else {
+      console.log("the player move damage is", playerMoveDamage)
+      console.log("the opponent move damage is", opponentMoveDamage)
 
-        if (playerMoveDamage > opponentMoveDamage) {
-          const damageDealt = playerMoveDamage - opponentMove.defense;
-          setOpponentHealth(opponentHealth - damageDealt);
-          setPlayerSpecialMoveCharge(
-            playerSpecialMoveCharge + (playerMoveDamage - opponentMove.defense)
-          );
-          setDamageDealt(damageDealt);
-          setWinner("player");
-          const hitAudio = new Audio(
-            `./audio/character_audio/${opponentCharacter.file_name}/${opponentCharacter.file_name}_hit.mp3`
-          );
-          hitAudio.play();
-        } else {
-          const damageDealt = opponentMoveDamage - playerMove.defense;
-          setPlayerHealth(playerHealth - damageDealt);
-          setOpponentSpecialMoveCharge(
-            opponentSpecialMoveCharge +
-              (opponentMoveDamage - playerMove.defense)
-          );
-          setDamageDealt(damageDealt);
-          setWinner("opponent");
-          const hitAudio = new Audio(
-            `./audio/character_audio/${selectedCharacter.file_name}/${selectedCharacter.file_name}_hit.mp3`
-          );
-          hitAudio.play();
-        }
+      if (playerMoveDamage > opponentMoveDamage) {
+        const damageDealt = playerMoveDamage - opponentMove.defense;
+        setOpponentHealth(opponentHealth - damageDealt);
+        setPlayerSpecialMoveCharge(
+          playerSpecialMoveCharge + (playerMoveDamage - opponentMove.defense)
+        );
+        setDamageDealt(damageDealt);
+        setWinner("player");
+        const hitAudio = new Audio(
+          `./audio/character_audio/${opponentCharacter.file_name}/${opponentCharacter.file_name}_hit.mp3`
+        );
+        hitAudio.play();
+      } else if (playerMoveDamage == opponentMoveDamage) {
+        console.log("The damages were equal!")
+      
+      } else {
+        const damageDealt = opponentMoveDamage - playerMove.defense;
+        setPlayerHealth(playerHealth - damageDealt);
+        setOpponentSpecialMoveCharge(
+          opponentSpecialMoveCharge +
+            (opponentMoveDamage - playerMove.defense)
+        );
+        setDamageDealt(damageDealt);
+        setWinner("opponent");
+        const hitAudio = new Audio(
+          `./audio/character_audio/${selectedCharacter.file_name}/${selectedCharacter.file_name}_hit.mp3`
+        );
+        hitAudio.play();
       }
+    }
 
       if (opponentMove.name === opponentCharacter.moves.specialMove.name) {
         setOpponentSpecialMoveCharge(0);
@@ -152,7 +149,6 @@ function App() {
       if (playerMove.name === selectedCharacter.moves.specialMove.name) {
         setPlayerSpecialMoveCharge(0);
       }
-    }
   };
 
   const reset = () => {
@@ -196,6 +192,8 @@ function App() {
               room={room}
               setOpponentMove={setOpponentMove}
               setWinner={setWinner}
+              setOpponentMoveDamage={setOpponentMoveDamage}
+              setPlayerMoveDamage={setPlayerMoveDamage}
             />
           ) : (
             <FightStateInactive
