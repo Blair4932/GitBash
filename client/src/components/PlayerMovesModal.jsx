@@ -14,21 +14,19 @@ const PlayerMovesModal = ({
 
 	return (
 		<div className={`modal-overlay ${fightState ? 'active' : ''}`}>
-			{result === 'victory' || result === 'loss' ? (
+			{result === 'victory' || result === 'defeat' ? (
 				result === 'victory' ? (
 					<div className="result-modal">
-						<h1>GITBASHED</h1>
-						<h3>You Win!</h3>
+						<h1>You Win</h1>
 						<button className="attack-button" onClick={reset}>
-							Play again?
+							Play again
 						</button>
 					</div>
 				) : (
 					<div className="result-modal">
-						<h1>GITBASHED</h1>
-						<h3>You Lose!</h3>
+						<h1>You Lose!</h1>
 						<button className="attack-button" onClick={reset}>
-							Play again?
+							Play again
 						</button>
 					</div>
 				)
