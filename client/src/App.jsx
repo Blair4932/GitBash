@@ -75,7 +75,7 @@ function App() {
 	useEffect(() => {
 		if (playerHealth <= 0) {
 			setPlayerHealth(0);
-			setResult('loss');
+			setResult('defeat');
 			console.log('result: ', result);
 		}
 	}, [playerHealth]);
