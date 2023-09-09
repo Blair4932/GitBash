@@ -71,7 +71,6 @@ function App() {
     if (playerHealth <= 0) {
       setPlayerHealth(0);
       setResult("loss");
-      //play end game audio
       var gitBashedAudio = new Audio("./audio/arena_audio/git_bashed.mp3");
       //add a delay before the audio plays
       setTimeout(() => {

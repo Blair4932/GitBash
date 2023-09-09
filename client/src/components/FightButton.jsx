@@ -7,7 +7,7 @@ const FightButton = ({ setFightState, selectedArena }) => {
   const handleFightClick = () => {
     setFightState(true);
     fightAudio.play();
-    arenaAudio.volume = 0.3;
+    arenaAudio.volume = 0.2;
     arenaAudio.play();
   };
 
