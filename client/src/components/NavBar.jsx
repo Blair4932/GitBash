@@ -4,7 +4,10 @@ const NavBar = () => {
 	return (
 		<>
 			<nav>
-				<ul>
+				<ul className="nav-bar">
+					<li>
+						<Link to="/">Home</Link>
+					</li>
 					<li>
 						<Link to="/fight">Fight</Link>
 					</li>
@@ -16,7 +19,7 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</nav>
-			<hr />
+			<hr className="fade-in-fourth break" />
 			<Outlet />
 		</>
 	);

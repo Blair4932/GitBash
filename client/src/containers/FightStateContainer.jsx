@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import FightStateActive from './FightStateActive';
 import FightStateInactive from './FightStateInactive';
+import NavBar from '../components/NavBar';
 
 function FightStateContainer({
 	arenas,
@@ -138,6 +139,7 @@ function FightStateContainer({
 
 	return (
 		<div>
+			<NavBar />
 			{characters.length > 0 && (
 				<div id="background" className={selectedArena.file_name}>
 					{fightState ? (

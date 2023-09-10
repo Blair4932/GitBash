@@ -389,25 +389,35 @@ db.users.insertMany([
     userName: "bigdaddy4329",
     email: "",
     password: "1234",
+    wins: 19,
+    losses: 9,
   },
   {
     userName: "lebronJamesTheFirst",
     email: "",
     password: "808080808",
+    wins: 7,
+    losses: 18,
   },
   {
     userName: "stankMaster420",
     email: "",
     password: "13241546bbff",
+    wins: 15,
+    losses: 9,
   },
   {
     userName: "derekTHEgiant",
     email: "",
     password: "bigfeetbigfeet",
+    wins: 8,
+    losses: 22,
   },
   {
     userName: "SheriffWoody",
     email: "",
     password: "Myrealnameiswoodyharelsonorsomething!",
+    wins: 10,
+    losses: 21,
   }
 ])

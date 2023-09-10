@@ -1,15 +1,19 @@
 import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 const TitlePage = () => {
 	return (
 		<>
-			<NavBar />
-			<div className="hero-text">
-				<h3>Welcome To</h3>
-				<h1>GITBASH</h1>
-				<a href="/fight">
-					<button>Enter the Arena</button>
-				</a>
+			<div className="background">
+				<div className="hero-text">
+					<h3 className="fade-in-first">Welcome To</h3>
+					<h1 className="fade-in-second">GITBASH</h1>
+					<Link to="/fight">
+						<button className="enter-button glow-on-hover metal-button fade-in-third">
+							Enter the Arena
+						</button>
+					</Link>
+				</div>
 			</div>
 		</>
 	);
