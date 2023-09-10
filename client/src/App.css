@@ -555,6 +555,11 @@
 	width: 100%;
 }
 
+.enter-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
 .enter-button {
 	background-color: rgb(184, 182, 182);
 	color: #000000;
