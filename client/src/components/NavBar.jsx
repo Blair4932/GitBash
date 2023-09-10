@@ -1,9 +1,11 @@
 import { Link, Outlet } from 'react-router-dom';
+import ActiveUser from './ActiveUser';
 
 const NavBar = () => {
 	return (
 		<>
 			<nav>
+				<ActiveUser />
 				<ul className="nav-bar">
 					<li>
 						<Link to="/">Home</Link>
@@ -19,7 +21,7 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</nav>
-			<hr className="fade-in-fourth break" />
+			<hr className="break" />
 			<Outlet />
 		</>
 	);

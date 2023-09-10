@@ -6,6 +6,8 @@ import TitlePage from './components/TitlePage';
 import About from './components/About';
 import NoMatch from './components/NoMatch';
 import Leaderboard from './components/LeaderBoard';
+import NewUser from './components/NewUser';
+import Login from './components/Login';
 
 const App = () => {
 	const [characters, setCharacters] = useState([]);
@@ -14,6 +16,7 @@ const App = () => {
 	const [selectedCharacter, setSelectedCharacter] = useState({});
 	const [opponentCharacter, setOpponentCharacter] = useState({});
 	const [users, setUsers] = useState([]);
+	const [activeUser, setActiveUser] = useState('');
 
 	const fetchCharacters = () => {
 		fetch('http://localhost:9000/api/characters/')
@@ -46,11 +49,22 @@ const App = () => {
 		fetchCharacters();
 		fetchUsers();
 	}, []);
-
+	console.log(activeUser.userName);
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<TitlePage title="GitBash" />} />
+				<Route
+					path="/new"
+					element={
+						<NewUser
+							setUsers={setUsers}
+							users={users}
+							setActiveUser={setActiveUser}
+							activeUser={activeUser}
+						/>
+					}
+				/>
 				<Route
 					path="fight"
 					element={
@@ -63,7 +77,14 @@ const App = () => {
 							setSelectedArena={setSelectedArena}
 							setSelectedCharacter={setSelectedCharacter}
 							setOpponentCharacter={setOpponentCharacter}
+							activeUser={activeUser}
 						/>
+					}
+				/>
+				<Route
+					path="login"
+					element={
+						<Login users={users} setActiveUser={setActiveUser} />
 					}
 				/>
 				<Route path="about" element={<About />} />

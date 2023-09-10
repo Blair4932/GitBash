@@ -12,6 +12,7 @@ function FightStateContainer({
 	setSelectedCharacter,
 	selectedCharacter,
 	setOpponentCharacter,
+	activeUser,
 }) {
 	const [playerMove, setPlayerMove] = useState('');
 	const [opponentMove, setOpponentMove] = useState({});
@@ -173,6 +174,7 @@ function FightStateContainer({
 							characters={characters}
 							opponentCharacter={opponentCharacter}
 							selectedCharacter={selectedCharacter}
+							activeUser={activeUser}
 						/>
 					)}
 				</div>
