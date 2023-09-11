@@ -74,7 +74,12 @@ const App = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<TitlePage title="GitBash" />} />
+				<Route
+					path="/"
+					element={
+						<TitlePage title="GitBash" fightState={fightState} />
+					}
+				/>
 				<Route
 					path="/new"
 					element={
