@@ -373,9 +373,9 @@ db.arenas.insertMany([
     url: "./images/arenas/Mothership_Arena.gif"
   },
   {
-    name: "Echo Swamp",
-    file_name:"echo_swamp",
-    url: "./images/arenas/EchoSwamp_Arena.gif"
+    name: "Mustafar",
+    file_name:"mustafar",
+    url: "./images/arenas/mustafar.gif"
   },
   {
     name: "Devil's Ship",

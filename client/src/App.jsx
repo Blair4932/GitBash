@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FightStateContainer from './containers/FightStateContainer';
@@ -18,24 +19,26 @@ const App = () => {
 	const [users, setUsers] = useState([]);
 	const [activeUser, setActiveUser] = useState('');
 
-	const fetchCharacters = () => {
-		fetch('http://localhost:9000/api/characters/')
-			.then((res) => res.json())
-			.then((data) => {
-				setCharacters(data);
-				setSelectedCharacter(data[0]);
-				setOpponentCharacter(data[0]);
-			});
-	};
 
-	const fetchArenas = () => {
-		fetch('http://localhost:9000/api/arenas/')
-			.then((res) => res.json())
-			.then((data) => {
-				setArenas(data);
-				setSelectedArena(data[0]);
-			});
-	};
+  const fetchCharacters = () => {
+    fetch("http://localhost:9000/api/characters/")
+      .then((res) => res.json())
+      .then((data) => {
+        setCharacters(data);
+        setSelectedCharacter(data[0]);
+        setOpponentCharacter(data[0]);
+      });
+  };
+
+  const fetchArenas = () => {
+    fetch("http://localhost:9000/api/arenas/")
+      .then((res) => res.json())
+      .then((data) => {
+        setArenas(data);
+        setSelectedArena(data[0]);
+      });
+  };
+
 
 	const fetchUsers = () => {
 		fetch('http://localhost:9000/api/users/')
