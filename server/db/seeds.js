@@ -381,6 +381,11 @@ db.arenas.insertMany([
     name: "Devil's Ship",
     file_name:"devils_ship",
     url: "./images/arenas/DevilsShip_Arena.gif"
+  },
+  {
+    name: "Empty Audio",
+    file_name:"empty_audio",
+    url: "./images/arenas/EmptyAudio_Arena.gif"
   }
 ]);
 
