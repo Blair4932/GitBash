@@ -13,7 +13,6 @@ function FightStateContainer({
 	selectedCharacter,
 	setOpponentCharacter,
 	activeUser,
-	reset,
 	fightState,
 	setFightState,
 	arenaAudio,
@@ -46,7 +45,7 @@ function FightStateContainer({
 				setOpponentMove(opponentCharacter.moves[moveTypes[randomMove]]);
 			}
 		}
-	}, [playerMove, opponentSpecialMoveCharge, opponentCharacter]);
+	}, [playerMove]);
 
 	useEffect(() => {
 		if (characters.length > 0) {
@@ -134,6 +133,22 @@ function FightStateContainer({
 		if (playerMove.name === selectedCharacter.moves.specialMove.name) {
 			setPlayerSpecialMoveCharge(0);
 		}
+	};
+
+	const reset = () => {
+		console.log('reset');
+		setFightState(false);
+		setSelectedArena(arenas[0]);
+		setSelectedCharacter(characters[0]);
+		setOpponentHealth(100);
+		setPlayerHealth(100);
+		setRoundTracker(0);
+		setResult('null');
+		setPlayerSpecialMoveCharge(0);
+		setOpponentSpecialMoveCharge(0);
+		setDamageDealt(0);
+		setWinner(null);
+		location.reload();
 	};
 
 	console.log(selectedArena);

@@ -51,20 +51,7 @@ const App = () => {
 		fetchUsers();
 	}, []);
 
-	const reset = () => {
-		setFightState(false);
-		setSelectedArena(arenas[0]);
-		setSelectedCharacter(characters[0]);
-		setOpponentHealth(100);
-		setPlayerHealth(100);
-		setRoundTracker(0);
-		setResult('null');
-		setPlayerSpecialMoveCharge(0);
-		setOpponentSpecialMoveCharge(0);
-		setDamageDealt(0);
-		setWinner(null);
-		location.reload();
-	};
+	
 
 	let arenaAudio = new Audio(
 		`./audio/arena_audio/${selectedArena.file_name}.mp3`
@@ -104,7 +91,6 @@ const App = () => {
 							setSelectedCharacter={setSelectedCharacter}
 							setOpponentCharacter={setOpponentCharacter}
 							activeUser={activeUser}
-							reset={reset}
 							setFightState={setFightState}
 							fightState={fightState}
 							arenaAudio={arenaAudio}

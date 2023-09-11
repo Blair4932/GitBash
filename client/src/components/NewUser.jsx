@@ -27,24 +27,26 @@ const NewUser = ({ setUsers, users, setActiveUser, activeUser }) => {
 	return (
 		<>
 			<NavBar />
-			<h1>Enter your information below: </h1>
-			<form onSubmit={addUser}>
-				<label htmlFor="userName">Username: </label>
-				<input
-					type="text"
-					name="userName"
-					onChange={(e) => setUserName(e.target.value)}
-					value={userName}
-				/>
-				<label htmlFor="password">Password: </label>
-				<input
-					type="text"
-					name="password"
-					onChange={(e) => setPassword(e.target.value)}
-					value={password}
-				/>
-				<input type="submit" />
-			</form>
+			<div className="container">
+				<h1>Enter your information below: </h1>
+				<form onSubmit={addUser}>
+					<label htmlFor="userName">Username: </label>
+					<input
+						type="text"
+						name="userName"
+						onChange={(e) => setUserName(e.target.value)}
+						value={userName}
+					/>
+					<label htmlFor="password">Password: </label>
+					<input
+						type="text"
+						name="password"
+						onChange={(e) => setPassword(e.target.value)}
+						value={password}
+					/>
+					<input type="submit" />
+				</form>
+			</div>
 		</>
 	);
 };
