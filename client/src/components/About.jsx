@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
 import NavBar from './NavBar';
 
-function About() {
+function About({ fightState }) {
+	useEffect(() => {
+		if (fightState) {
+			location.reload();
+		}
+	}, []);
+
 	return (
 		<div>
 			<NavBar />

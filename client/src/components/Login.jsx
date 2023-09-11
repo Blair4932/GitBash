@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
 import NavBar from './NavBar';
 
-const Login = ({ users, setActiveUser }) => {
+const Login = ({ users, setActiveUser, fightState }) => {
+	useEffect(() => {
+		if (fightState) {
+			location.reload();
+		}
+	}, []);
+
 	return (
 		<>
 			<NavBar />

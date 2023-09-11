@@ -20,6 +20,10 @@
 	padding-top: 5rem;
 }
 
+.empty_audio {
+	display: none;
+}
+
 .china {
 	background-image: url('/images/arenas/china.gif');
 	background-size: cover;

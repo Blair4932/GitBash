@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import NavBar from './NavBar';
 
-function Leaderboard({ users }) {
-	console.log(users);
+function Leaderboard({ users, fightState }) {
+	useEffect(() => {
+		if (fightState) {
+			location.reload();
+		}
+	}, []);
+
 	return (
 		<div>
 			<NavBar />

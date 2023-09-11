@@ -13,6 +13,10 @@ function FightStateContainer({
 	selectedCharacter,
 	setOpponentCharacter,
 	activeUser,
+	reset,
+	fightState,
+	setFightState,
+	arenaAudio,
 }) {
 	const [playerMove, setPlayerMove] = useState('');
 	const [opponentMove, setOpponentMove] = useState({});
@@ -23,9 +27,10 @@ function FightStateContainer({
 	const [playerSpecialMoveCharge, setPlayerSpecialMoveCharge] = useState(0);
 	const [opponentSpecialMoveCharge, setOpponentSpecialMoveCharge] =
 		useState(0);
-	const [fightState, setFightState] = useState(false);
 	const [damageDealt, setDamageDealt] = useState(0);
 	const [winner, setWinner] = useState(null);
+
+	console.log('fightstate: ', fightState);
 
 	useEffect(() => {
 		if (characters.length > 0) {
@@ -68,6 +73,14 @@ function FightStateContainer({
 			console.log('result: ', result);
 		}
 	}, [opponentHealth]);
+
+	useEffect(() => {
+		if (fightState) {
+			arenaAudio.play();
+		} else {
+			arenaAudio.volume = 0;
+		}
+	}, [fightState]);
 
 	const compareMoves = () => {
 		setRoundTracker(roundTracker + 1);
@@ -123,24 +136,11 @@ function FightStateContainer({
 		}
 	};
 
-	const reset = () => {
-		setFightState(false);
-		setSelectedArena(arenas[0]);
-		setSelectedCharacter(characters[0]);
-		setOpponentHealth(100);
-		setPlayerHealth(100);
-		setRoundTracker(0);
-		setResult('null');
-		setPlayerSpecialMoveCharge(0);
-		setOpponentSpecialMoveCharge(0);
-		setDamageDealt(0);
-		setWinner(null);
-		location.reload();
-	};
+	console.log(selectedArena);
 
 	return (
 		<div>
-			<NavBar />
+			<NavBar setFightState={setFightState} />
 			{characters.length > 0 && (
 				<div id="background" className={selectedArena.file_name}>
 					{fightState ? (
