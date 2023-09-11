@@ -4,7 +4,7 @@ import ActiveUser from './ActiveUser';
 const NavBar = () => {
 	return (
 		<>
-			<nav>
+			<nav className="nav-container">
 				<ActiveUser />
 				<ul className="nav-bar">
 					<li>
