@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const TitlePage = () => {
+const TitlePage = ({ fightState }) => {
+	useEffect(() => {
+		if (fightState) {
+			location.reload();
+		}
+	}, []);
+
 	return (
 		<>
 			<div className="background">
