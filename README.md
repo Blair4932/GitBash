@@ -30,10 +30,6 @@ npm run dev
 Pick your warrior, and FIGHT! GITBASH is a battle to the death. Select your move and each turn whoever hits harder causes damage to their opponent. Cause enough damage, and you will earn your devastating special move!
 So what are you waiting for? Get out there and FIGHT!
 
-### The Future of Gitbash:
-
-Gitbash will be evolving to include more user-functionality using React Routing, as well as a developed multiplayer aspect utilising sockets.io.
-
 ![Welcome Screen](https://github.com/Blair4932/GitBash/blob/main/Screenshots/welcomeScreen.png?raw=true)
 ![Character Select](https://github.com/Blair4932/GitBash/blob/main/Screenshots/characterSelect.png?raw=true)
 ![Fight screen](https://github.com/Blair4932/GitBash/blob/main/Screenshots/fightScreen.png?raw=true)
